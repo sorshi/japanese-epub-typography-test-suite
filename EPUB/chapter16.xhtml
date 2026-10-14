@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>禁則処理の強さ</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+  </head>
+  <body>
+    <section id="chapter16">
+      <h1>16　禁則処理の強さ</h1>
+      <p class="info">同じ文字列・行長で、禁則処理の強さを比較する。比較ラベルは試験本文の外に置く。行端へ来た文字についてのみ判定する。</p>
+      <p class="reference">参照：<a href="https://www.w3.org/TR/css-text-3/">CSS Text Level 3</a>。判定方法は<a href="chapter25.xhtml">第25章</a>。</p>
+      <section class="test-case" id="K16-loose">
+        <h2>K16-loose　loose</h2>
+        <p class="expected">判定区分：CSS。期待結果：同じ本文を比較する。小書き仮名・長音・踊り字の直前はnormal/strictでは改行禁止、looseでは許容。波ダッシュ直前は日本語のnormal/looseでは許容、strictでは禁止。「許容」は必ずそこで改行するという意味ではない。文字別試験は第26章。</p>
+        <p class="probe " style="inline-size:4em; line-break:loose;">天地玄黄ゃ宇宙洪荒ー日月盈昃々辰宿列張〜寒来暑往。</p>
+      </section>
+      <section class="test-case" id="K16-normal">
+        <h2>K16-normal　normal</h2>
+        <p class="expected">判定区分：CSS。期待結果：同じ本文を比較する。小書き仮名・長音・踊り字の直前はnormal/strictでは改行禁止、looseでは許容。波ダッシュ直前は日本語のnormal/looseでは許容、strictでは禁止。「許容」は必ずそこで改行するという意味ではない。文字別試験は第26章。</p>
+        <p class="probe " style="inline-size:4em; line-break:normal;">天地玄黄ゃ宇宙洪荒ー日月盈昃々辰宿列張〜寒来暑往。</p>
+      </section>
+      <section class="test-case" id="K16-strict">
+        <h2>K16-strict　strict</h2>
+        <p class="expected">判定区分：CSS。期待結果：同じ本文を比較する。小書き仮名・長音・踊り字の直前はnormal/strictでは改行禁止、looseでは許容。波ダッシュ直前は日本語のnormal/looseでは許容、strictでは禁止。「許容」は必ずそこで改行するという意味ではない。文字別試験は第26章。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄黄ゃ宇宙洪荒ー日月盈昃々辰宿列張〜寒来暑往。</p>
+      </section>
+
+    </section>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>ルビの基本構造</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+  </head>
+  <body>
+    <section id="chapter03">
+      <h1>03　ルビの基本構造</h1>
+      <p class="info">親文字と読みの対応を比較する。語全体へのルビと、一文字ずつのルビを別の試験にする。折り返しと長いルビは第28章に収録。</p>
+      <p class="reference">参照：<a href="https://www.w3.org/TR/jlreq/">JLReq（日本語組版処理の要件）</a> / <a href="https://www.w3.org/TR/css-ruby-1/">CSS Ruby Level 1（草案）</a> / <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-ruby-element">HTML Standard: ruby</a>。判定方法は<a href="chapter25.xhtml">第25章</a>。</p>
+      <section class="test-case" id="R03-G">
+        <h2>R03-G　グループルビ</h2>
+        <p class="expected">判定区分：CSS。期待結果：「明日」全体に「あした」が対応し、読みが隣の語へずれない。</p>
+        <p class="probe " style=""><ruby>明日<rt>あした</rt></ruby>、<ruby>宇宙<rt>そら</rt></ruby>へ。<ruby>銀河鉄道<rt>ぎんがてつどう</rt></ruby>が走る。</p>
+      </section>
+      <section class="test-case" id="R03-M">
+        <h2>R03-M　モノルビ</h2>
+        <p class="expected">判定区分：CSS。期待結果：山に「やま」、川に「かわ」がそれぞれ対応する。</p>
+        <p class="probe " style=""><ruby>山<rt>やま</rt></ruby><ruby>川<rt>かわ</rt></ruby>を越える。</p>
+      </section>
+      <section class="test-case" id="R03-P">
+        <h2>R03-P　親文字ごとの対応を持つルビ</h2>
+        <p class="expected">判定区分：CSS。期待結果：天に「てん」、体に「たい」、観に「かん」、測に「そく」が対応する。読みの配分を保つ。</p>
+        <p class="probe " style=""><ruby>天<rt>てん</rt>体<rt>たい</rt>観<rt>かん</rt>測<rt>そく</rt></ruby>を続ける。</p>
+      </section>
+
+    </section>
+  </body>
+</html>

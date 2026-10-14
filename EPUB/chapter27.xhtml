@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>分割禁止・行末境界</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+  </head>
+  <body>
+    <section id="chapter27">
+      <h1>27　分割禁止・行末境界</h1>
+      <p class="info">連続文字列を短い枠で自然に折り返す。nowrapや強制改行で結果を固定しない。リーダー、ダーシ、くの字点は別々のIDで記録する。</p>
+      <p class="reference">参照：<a href="https://www.w3.org/TR/jlreq/">JLReq（日本語組版処理の要件）</a> / <a href="https://www.w3.org/TR/css-text-3/">CSS Text Level 3</a>。判定方法は<a href="chapter25.xhtml">第25章</a>。</p>
+      <section class="test-case" id="N27-01-3">
+        <h2>N27-01-3　三点リーダー U+2026 × 2／前置き3字</h2>
+        <p class="expected">判定区分：CSS。期待結果：strict指定で二文字の間を分割せず、同じ行へ送る。字形がつながるかは別に記録し、フォント差を許容する。二文字の間にタグ・空白・改行はない。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄……日月星辰。</p>
+      </section>
+      <section class="test-case" id="N27-01-4">
+        <h2>N27-01-4　三点リーダー U+2026 × 2／前置き4字</h2>
+        <p class="expected">判定区分：CSS。期待結果：strict指定で二文字の間を分割せず、同じ行へ送る。字形がつながるかは別に記録し、フォント差を許容する。二文字の間にタグ・空白・改行はない。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄黄……日月星辰。</p>
+      </section>
+      <section class="test-case" id="N27-01-5">
+        <h2>N27-01-5　三点リーダー U+2026 × 2／前置き5字</h2>
+        <p class="expected">判定区分：CSS。期待結果：strict指定で二文字の間を分割せず、同じ行へ送る。字形がつながるかは別に記録し、フォント差を許容する。二文字の間にタグ・空白・改行はない。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄黄宇……日月星辰。</p>
+      </section>
+      <section class="test-case" id="N27-02-3">
+        <h2>N27-02-3　二点リーダー U+2025 × 2／前置き3字</h2>
+        <p class="expected">判定区分：CSS。期待結果：strict指定で二文字の間を分割せず、同じ行へ送る。字形がつながるかは別に記録し、フォント差を許容する。二文字の間にタグ・空白・改行はない。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄‥‥日月星辰。</p>
+      </section>
+      <section class="test-case" id="N27-02-4">
+        <h2>N27-02-4　二点リーダー U+2025 × 2／前置き4字</h2>
+        <p class="expected">判定区分：CSS。期待結果：strict指定で二文字の間を分割せず、同じ行へ送る。字形がつながるかは別に記録し、フォント差を許容する。二文字の間にタグ・空白・改行はない。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄黄‥‥日月星辰。</p>
+      </section>
+      <section class="test-case" id="N27-02-5">
+        <h2>N27-02-5　二点リーダー U+2025 × 2／前置き5字</h2>
+        <p class="expected">判定区分：CSS。期待結果：strict指定で二文字の間を分割せず、同じ行へ送る。字形がつながるかは別に記録し、フォント差を許容する。二文字の間にタグ・空白・改行はない。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄黄宇‥‥日月星辰。</p>
+      </section>
+      <section class="test-case" id="N27-03-3">
+        <h2>N27-03-3　ホリゾンタルバー U+2015 × 2／前置き3字</h2>
+        <p class="expected">判定区分：組版方針。期待結果：strict指定で二文字の間を分割せず、同じ行へ送る。字形がつながるかは別に記録し、フォント差を許容する。二文字の間にタグ・空白・改行はない。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄――日月星辰。</p>
+      </section>
+      <section class="test-case" id="N27-03-4">
+        <h2>N27-03-4　ホリゾンタルバー U+2015 × 2／前置き4字</h2>
+        <p class="expected">判定区分：組版方針。期待結果：strict指定で二文字の間を分割せず、同じ行へ送る。字形がつながるかは別に記録し、フォント差を許容する。二文字の間にタグ・空白・改行はない。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄黄――日月星辰。</p>
+      </section>
+      <section class="test-case" id="N27-03-5">
+        <h2>N27-03-5　ホリゾンタルバー U+2015 × 2／前置き5字</h2>
+        <p class="expected">判定区分：組版方針。期待結果：strict指定で二文字の間を分割せず、同じ行へ送る。字形がつながるかは別に記録し、フォント差を許容する。二文字の間にタグ・空白・改行はない。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄黄宇――日月星辰。</p>
+      </section>
+      <section class="test-case" id="N27-04-3">
+        <h2>N27-04-3　エムダッシュ U+2014 × 2／前置き3字</h2>
+        <p class="expected">判定区分：組版方針。期待結果：strict指定で二文字の間を分割せず、同じ行へ送る。字形がつながるかは別に記録し、フォント差を許容する。二文字の間にタグ・空白・改行はない。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄——日月星辰。</p>
+      </section>
+      <section class="test-case" id="N27-04-4">
+        <h2>N27-04-4　エムダッシュ U+2014 × 2／前置き4字</h2>
+        <p class="expected">判定区分：組版方針。期待結果：strict指定で二文字の間を分割せず、同じ行へ送る。字形がつながるかは別に記録し、フォント差を許容する。二文字の間にタグ・空白・改行はない。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄黄——日月星辰。</p>
+      </section>
+      <section class="test-case" id="N27-04-5">
+        <h2>N27-04-5　エムダッシュ U+2014 × 2／前置き5字</h2>
+        <p class="expected">判定区分：組版方針。期待結果：strict指定で二文字の間を分割せず、同じ行へ送る。字形がつながるかは別に記録し、フォント差を許容する。二文字の間にタグ・空白・改行はない。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄黄宇——日月星辰。</p>
+      </section>
+      <section class="test-case" id="N27-05-3">
+        <h2>N27-05-3　くの字点 U+3033 U+3035／前置き3字</h2>
+        <p class="expected">判定区分：組版方針。期待結果：strict指定で二文字の間を分割せず、同じ行へ送る。字形がつながるかは別に記録し、フォント差を許容する。二文字の間にタグ・空白・改行はない。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄〳〵日月星辰。</p>
+      </section>
+      <section class="test-case" id="N27-05-4">
+        <h2>N27-05-4　くの字点 U+3033 U+3035／前置き4字</h2>
+        <p class="expected">判定区分：組版方針。期待結果：strict指定で二文字の間を分割せず、同じ行へ送る。字形がつながるかは別に記録し、フォント差を許容する。二文字の間にタグ・空白・改行はない。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄黄〳〵日月星辰。</p>
+      </section>
+      <section class="test-case" id="N27-05-5">
+        <h2>N27-05-5　くの字点 U+3033 U+3035／前置き5字</h2>
+        <p class="expected">判定区分：組版方針。期待結果：strict指定で二文字の間を分割せず、同じ行へ送る。字形がつながるかは別に記録し、フォント差を許容する。二文字の間にタグ・空白・改行はない。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄黄宇〳〵日月星辰。</p>
+      </section>
+      <section class="test-case" id="N27-06-3">
+        <h2>N27-06-3　濁点付きくの字点 U+3034 U+3035／前置き3字</h2>
+        <p class="expected">判定区分：組版方針。期待結果：strict指定で二文字の間を分割せず、同じ行へ送る。字形がつながるかは別に記録し、フォント差を許容する。二文字の間にタグ・空白・改行はない。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄〴〵日月星辰。</p>
+      </section>
+      <section class="test-case" id="N27-06-4">
+        <h2>N27-06-4　濁点付きくの字点 U+3034 U+3035／前置き4字</h2>
+        <p class="expected">判定区分：組版方針。期待結果：strict指定で二文字の間を分割せず、同じ行へ送る。字形がつながるかは別に記録し、フォント差を許容する。二文字の間にタグ・空白・改行はない。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄黄〴〵日月星辰。</p>
+      </section>
+      <section class="test-case" id="N27-06-5">
+        <h2>N27-06-5　濁点付きくの字点 U+3034 U+3035／前置き5字</h2>
+        <p class="expected">判定区分：組版方針。期待結果：strict指定で二文字の間を分割せず、同じ行へ送る。字形がつながるかは別に記録し、フォント差を許容する。二文字の間にタグ・空白・改行はない。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄黄宇〴〵日月星辰。</p>
+      </section>
+      <section class="test-case" id="N27-INLINE">
+        <h2>N27-INLINE　装飾要素をまたぐリーダー</h2>
+        <p class="expected">判定区分：CSS。期待結果：二つのリーダーはnormal/strictで分割しない。装飾による要素境界だけでは禁則を解除しない。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄<span>…</span><span>…</span>日月。</p>
+      </section>
+
+    </section>
+  </body>
+</html>

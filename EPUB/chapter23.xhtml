@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>挿絵の表示・透明度・色</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+  </head>
+  <body>
+    <section id="chapter23">
+      <h1>23　挿絵の表示・透明度・色</h1>
+      <p class="info">PNGとJPEGの挿絵を、透明度・背景色・線の太さ・図形の色・白地と墨の比率を変えて比較する。すべて192×192ピクセルの十一枚の画像。特定のリーダーやテーマに依存しない表示テストとして使用する。</p>
+      <p class="expected">判定区分：画像の基本表示と、表示設定による変化の観察。各ケースの「基準表示」は画像補正や背景へのなじませを適用しない表示を指す。この章のCSSには色変換や乗算合成を指定していない。</p>
+      <h2>確認手順</h2>
+      <ol>
+        <li>画像の読み込み完了を確認する。背景色と、画像補正・色反転・背景へのなじませなどの設定を記録する。設定を無効にできる場合は、まず基準表示で比較する。</li>
+        <li>透明PNGと白背景PNG、モノクロとカラー、PNGとJPEGを対にして、背景・図形・輪郭の違いを確認する。</li>
+        <li>リーダーで選べる明るい背景、色付きの背景、暗い背景へ切り換える。透明部分に背景が見えることと、不透明な画像の色が設定に応じてどう変わるかを記録する。</li>
+        <li>拡大・縮小、文字サイズ・画面寸法の変更、前後のページ移動を行う。正方形の縦横比、画像の欠落・切れ、細線の見え方を確認する。</li>
+      </ol>
+      <p>白地・墨の比率は元画像の画素数に対する割合で、画面の解像度や表示倍率を表す値ではない。背景へのなじませなどの機能がある場合は、比率の違いで処理が変わるかも観察する。自動補正の有無や適用範囲を、すべてのリーダー共通の合否条件にはしない。</p>
+      <p>色管理、画面、JPEG圧縮、縮小時の補間による差は記録する。画像補正を無効にできない場合は設定を明記し、基準表示と分けて評価する。</p>
+      <section class="test-case" id="I23-01">
+        <h2>I23-01　透明背景・モノクロ図形</h2>
+        <p class="expected">基準表示：透明部分にページ背景が見え、黒・灰色の図形を識別できる。白い矩形や不透明な縁が追加されない。次の白背景PNGと同じ直線・矩形・三角形・四角形を使う。</p>
+        <figure class="illustration-figure"><img id="img-I23-01" src="images/transparent-shapes.png" width="192" height="192" alt="透明背景に黒い直線、矩形、四角形と灰色の三角形"/><figcaption>透明背景／PNG</figcaption></figure>
+      </section>
+      <section class="test-case" id="I23-02">
+        <h2>I23-02　白背景・モノクロPNG</h2>
+        <p class="expected">基準表示：白背景は不透明な白い矩形として表示され、黒と灰色の図形を識別できる。色付きや暗いページ背景では、透明PNGとの違いを確認しやすい。</p>
+        <figure class="illustration-figure"><img id="img-I23-02" src="images/white-shapes.png" width="192" height="192" alt="白背景に透明PNGと同じ黒と灰色の図形"/><figcaption>白背景／モノクロPNG</figcaption></figure>
+      </section>
+      <section class="test-case" id="I23-03">
+        <h2>I23-03　白背景・モノクロJPEG</h2>
+        <p class="expected">基準表示：白背景とモノクロ図形を表示する。前のPNGと形・位置が対応する。JPEG圧縮による輪郭や微小な階調差は許容する。</p>
+        <figure class="illustration-figure"><img id="img-I23-03" src="images/white-shapes.jpg" width="192" height="192" alt="白背景のモノクロ図形をJPEGで保存した画像"/><figcaption>白背景／モノクロJPEG</figcaption></figure>
+      </section>
+      <section class="test-case" id="I23-04">
+        <h2>I23-04　白背景・カラーPNG</h2>
+        <p class="expected">基準表示：青い三角形、赤い四角形、緑の矩形、黒い直線と白背景を識別できる。モノクロ画像と比較し、色の消失や意図しない反転がないか確認する。</p>
+        <figure class="illustration-figure"><img id="img-I23-04" src="images/color-shapes.png" width="192" height="192" alt="白背景に青い三角形、赤い四角形、緑の矩形、黒い直線"/><figcaption>白背景／カラーPNG</figcaption></figure>
+      </section>
+      <section class="test-case" id="I23-05">
+        <h2>I23-05　白背景・カラーJPEG</h2>
+        <p class="expected">基準表示：カラーPNGと同じ図形・色の対応を確認できる。JPEG圧縮による輪郭や色の差は許容する。</p>
+        <figure class="illustration-figure"><img id="img-I23-05" src="images/color-shapes.jpg" width="192" height="192" alt="カラーPNGと同じ図形をJPEGで保存した画像"/><figcaption>白背景／カラーJPEG</figcaption></figure>
+      </section>
+      <section class="test-case" id="I23-06">
+        <h2>I23-06　灰色背景・モノクロPNG</h2>
+        <p class="expected">基準表示：背景はRGB各230の不透明な薄い灰色。白背景の画像と区別でき、背景と図形の濃淡を保つ。</p>
+        <figure class="illustration-figure"><img id="img-I23-06" src="images/offwhite-shapes.png" width="192" height="192" alt="薄い灰色背景にモノクロの直線と図形"/><figcaption>灰色背景／PNG</figcaption></figure>
+      </section>
+      <section class="test-case" id="I23-07">
+        <h2>I23-07　墨が多い・白地約20％</h2>
+        <p class="expected">基準表示：画像の端まで黒く、中央に白い四角形がある。白地は全画素の約20.1％。次の約5％の画像と、中央の四角形の大きさを比較する。</p>
+        <figure class="illustration-figure"><img id="img-I23-07" src="images/dense-white-20.png" width="192" height="192" alt="黒い正方形の中央に面積約20％の白い四角形"/><figcaption>白地約20.1％／PNG</figcaption></figure>
+      </section>
+      <section class="test-case" id="I23-08">
+        <h2>I23-08　墨が多い・白地約5％</h2>
+        <p class="expected">基準表示：黒地の中央に、小さい白い四角形がある。白地は全画素の約5.3％。縮小や表示設定の変更で、白い部分が消えたり、前の画像と同じ大きさになったりしないか確認する。</p>
+        <figure class="illustration-figure"><img id="img-I23-08" src="images/dense-white-5.png" width="192" height="192" alt="黒い正方形の中央に面積約5％の白い四角形"/><figcaption>白地約5.3％／PNG</figcaption></figure>
+      </section>
+      <section class="test-case" id="I23-09">
+        <h2>I23-09　墨が少ない・墨約0.3％</h2>
+        <p class="expected">基準表示：白地の中央に幅54ピクセル・高さ2ピクセルの黒い直線がある。墨は全画素の約0.293％。原寸では線を識別でき、縮小時の薄れ方や欠け方を記録する。</p>
+        <figure class="illustration-figure"><img id="img-I23-09" src="images/sparse-ink-0_3.png" width="192" height="192" alt="白い正方形の中央に短く細い黒い直線"/><figcaption>墨約0.293％／PNG</figcaption></figure>
+      </section>
+      <section class="test-case" id="I23-10">
+        <h2>I23-10　墨が増えた・墨約1％</h2>
+        <p class="expected">基準表示：白地の中央に幅100ピクセル・高さ4ピクセルの黒い直線がある。墨は全画素の約1.085％。前の細線画像より長く、太く表示される。</p>
+        <figure class="illustration-figure"><img id="img-I23-10" src="images/sparse-ink-1.png" width="192" height="192" alt="白い正方形の中央に少し長く太い黒い直線"/><figcaption>墨約1.085％／PNG</figcaption></figure>
+      </section>
+      <section class="test-case" id="I23-11">
+        <h2>I23-11　白一色</h2>
+        <p class="expected">基準表示：図形も文字もない、不透明な白い正方形。色付きや暗いページ背景で表示領域を確認する。白背景と同化して見えない場合も、読み込み失敗とは区別する。</p>
+        <figure class="illustration-figure"><img id="img-I23-11" src="images/blank-white.png" width="192" height="192" alt="図形も文字もない白一色の正方形"/><figcaption>白一色／PNG</figcaption></figure>
+      </section>
+      <p class="reference">判定方法と記録欄は<a href="chapter25.xhtml">第25章</a>。すべて192×192ピクセルのオリジナル画像。画像生成スクリプトは、ソースリポジトリ直下の「generate_image_fixtures.py」を参照。</p>
+    </section>
+  </body>
+</html>

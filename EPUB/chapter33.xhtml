@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>結合文字・異体字シーケンス</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+  </head>
+  <body>
+    <section id="chapter33">
+      <h1>33　結合文字・異体字シーケンス</h1>
+      <p class="info">似た見た目でもコードポイント列が違う文字を比較する。ソースを正規化して分解形や異体字セレクタを失わないようにする。</p>
+      <p class="reference">参照：<a href="https://www.unicode.org/reports/tr29/">Unicode UAX #29</a> / <a href="https://www.w3.org/TR/css-text-3/">CSS Text Level 3</a>。判定方法は<a href="chapter25.xhtml">第25章</a>。</p>
+      <section class="test-case" id="U33-NFC">
+        <h2>U33-NFC　合成済みの濁音</h2>
+        <p class="expected">判定区分：CSS。期待結果：が（U+304C）を一文字として扱う。次の分解形と表示を比較する。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄が日月。</p>
+      </section>
+      <section class="test-case" id="U33-NFD">
+        <h2>U33-NFD　結合濁点</h2>
+        <p class="expected">判定区分：CSS。期待結果：か（U+304B）と結合濁点（U+3099）を途中で改行しない。濁点が独立した字幅を取らず、前の仮名に対応する。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄が日月。</p>
+      </section>
+      <section class="test-case" id="U33-HALF">
+        <h2>U33-HALF　半角カナと濁点</h2>
+        <p class="expected">判定区分：文字のまとまり・観察。期待結果：ｶ（U+FF76）とﾞ（U+FF9E）の組を一つのまとまりとして扱うか確認する。全角との字形差は許容する。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄ｶﾞ日月。</p>
+      </section>
+      <section class="test-case" id="U33-IVS">
+        <h2>U33-IVS　異体字セレクタ</h2>
+        <p class="expected">判定区分：文字のまとまり・フォント依存。期待結果：葛＋U+E0100の間を分断せず、セレクタを独立した四角や空白として表示しない。異体字の字形切替はフォント依存として記録する。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄葛󠄀日月。比較：葛。</p>
+      </section>
+      <section class="test-case" id="U33-NONBMP">
+        <h2>U33-NONBMP　補助漢字</h2>
+        <p class="expected">判定区分：文字のまとまり・フォント依存。期待結果：𠮷（U+20BB7）が分割・欠落しない。未収録フォントの代替表示はフォント不足として記録する。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄𠮷日月。</p>
+      </section>
+      <section id="U33-SEARCH" class="test-case">
+        <h2>U33-SEARCH　選択・コピー・検索</h2>
+        <p class="expected">判定区分：リーダー機能の観察。期待結果：選択・コピーで基底文字と結合文字が欠けず、余分な改行が入らない。NFCとNFDの同一視や異体字検索はリーダーの検索方針として記録し、UAX #29の適合判定へ混ぜない。</p>
+        <p id="unicode-copy" class="probe">が／が／ｶﾞ／葛󠄀／𠮷</p>
+        <p>コピー結果のコードポイントを確認する。が＝U+304C。分解形＝U+304B U+3099。半角形＝U+FF76 U+FF9E。異体字シーケンス＝U+845B U+E0100。補助漢字＝U+20BB7。</p>
+      </section>
+
+    </section>
+  </body>
+</html>

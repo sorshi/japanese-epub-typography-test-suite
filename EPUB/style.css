@@ -1,0 +1,75 @@
+@charset "UTF-8";
+@namespace epub "http://www.idpf.org/2007/ops";
+html { writing-mode: vertical-rl; -webkit-writing-mode: vertical-rl; }
+body { margin: 6%; padding: 0; font-family: "Noto Serif CJK JP", "Yu Mincho", "Hiragino Mincho ProN", serif; line-height: 1.85; font-size: 1em; }
+h1 { font-size: 1.45em; margin: 0 0 1.1em 0; line-height:1.5; }
+h2 { font-size: 1.2em; margin: 0 0 1em; }
+p { margin: 0 0 1em; text-indent: 1em; }
+.small { font-size: .78em; } .large { font-size: 1.75em; } .xxl { font-size: 2.4em; }
+.info { border: 1px solid #777; padding:.65em; font-size:.8em; margin:0 0 1.4em; text-indent:0; background:#f7f7f7; }
+.sample { border-inline-start: 2px solid #999; padding-inline-start: .65em; margin: 0 0 1.3em; }
+.code { font-family: monospace; font-size:.76em; line-height:1.5; overflow-wrap:anywhere; text-orientation:mixed; }
+.tcy { text-combine-upright: all; -webkit-text-combine: horizontal; }
+.emphasis { text-emphasis: filled sesame; -webkit-text-emphasis: filled sesame; }
+.emphasis-red { text-emphasis: filled sesame red; -webkit-text-emphasis: filled sesame red; }
+.emphasis-blue { text-emphasis: open circle #174ea6; -webkit-text-emphasis: open circle #174ea6; }
+.ruby-left { ruby-position: under; -webkit-ruby-position: after; }
+.orient-upright { text-orientation: upright; } .orient-sideways { text-orientation: sideways; }
+.hang-allow { hanging-punctuation: allow-end; } .hang-force { hanging-punctuation: force-end; }
+.justify { text-align: justify; } .testframe { block-size: 19em; inline-size: 15em; border:1px solid #777; padding:.4em; }
+.tight { line-break: strict; } .normal { line-break: normal; } .loose { line-break: loose; }
+.horizontal { writing-mode: horizontal-tb; -webkit-writing-mode: horizontal-tb; }
+.marker-list { list-style-type: decimal; } .marker-list li { padding-block-end:.4em; }
+.linebox { border:1px solid #999; inline-size: 18em; padding:.3em; }
+.align-mid { vertical-align:middle; } .align-top { vertical-align:top; } .align-super { vertical-align:super; } .align-sub { vertical-align:sub; }
+ruby rt { font-size: .5em; }
+.cover { font-size: 2em; font-weight:bold; letter-spacing:.12em; }
+
+/* 比較ラベルは枠外へ置き、行末試験の文字数に数えないルン。 */
+.reference, .expected { text-indent: 0; font-size: .85em; }
+.test-case { margin-block-end: 1.5em; }
+.test-case h2 { font-size: 1em; break-after: avoid; page-break-after: avoid; }
+.test-case h3 { font-size: .9em; }
+.probe {
+    box-sizing: content-box;
+    inline-size: 8em;
+    block-size: auto;
+    border: 1px solid #999;
+    padding: .5em;
+    margin-block: .5em 1em;
+    text-indent: 0;
+    text-align: start;
+    line-height: 1.85;
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: normal;
+    line-break: strict;
+    hanging-punctuation: none;
+    letter-spacing: 0;
+    word-spacing: normal;
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+.ruby-over { ruby-position: over; -webkit-ruby-position: before; }
+.ruby-under { ruby-position: under; -webkit-ruby-position: after; }
+.emphasis-left { text-emphasis-position: over left; }
+.no-emphasis { text-emphasis: none; -webkit-text-emphasis: none; }
+.keep-next { break-after: avoid; page-break-after: avoid; }
+.new-page { break-before: page; page-break-before: always; }
+/* 長文を一つの分割禁止ボックスにせず、リーダー自身に改ページさせるルン。 */
+.flow-paragraph { line-break: strict; }
+.widow-sample { widows: 2; orphans: 2; }
+
+/* 挿絵は元の色と透明度で比較できるよう、背景や色変換を加えないルン。 */
+.illustration-figure {
+    writing-mode: horizontal-tb;
+    -webkit-writing-mode: horizontal-tb;
+    width: 192px;
+    margin: 0 0 1em;
+    padding: 0;
+    background: transparent;
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+.illustration-figure img { display: block; width: 192px; height: auto; }
+.illustration-figure figcaption { font-size: .8em; margin-top: .4em; }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+  <head><meta charset="UTF-8"/><title>ダッシュ・分離禁止</title><link rel="stylesheet" type="text/css" href="style.css"/></head>
+  <body>
+    <section id="B21">
+      <h1>21　ダッシュ・分離禁止</h1>
+      <p class="info">検証内容：二倍ダーシ、水平線、長音記号のつながりと回転を確認する。</p>
+      <p class="expected">ケースID：B21。期待結果：各記号の向きと接続を記録する。連続記号の折り返しは第27章で判定する。 判定区分・記録方法は第25章。</p>
+      <p>二倍ダーシ：これは――遠い宇宙の話。三倍ダーシ：これは―――長い航路。</p>
+      <p>ホリゾンタルバー：これは――文章。長音：コーヒー、スーパー、データ。単体：―、—、–、−、ー。</p>
+      <h2>D21-2014　U+2014の連続</h2>
+      <p class="sample" id="dash-2014">これは——二倍のエムダッシュ。これは———三倍のエムダッシュ。</p>
+      <p class="expected">期待結果：U+2015（―）とU+2014（—）を区別して記録する。字形の接続はフォント依存。行末での分割は第27章で別に判定する。</p>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>利用方法・判定基準</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+  </head>
+  <body>
+    <section id="chapter25">
+      <h1>25　利用方法・判定基準</h1>
+      <p class="info">本テスト集は検証本文33章に表紙と奥付を加えた構成。第23章は挿絵の透明度・色・線・画素比率を比較する試験。第1〜24章は基本機能、第26〜33章は境界条件と実用上の回帰試験。本文はオリジナルであり、規格の例文・図版を複製していない。</p>
+      <p class="reference">参照：<a href="https://www.w3.org/TR/jlreq/">JLReq（日本語組版処理の要件）</a> / <a href="https://www.w3.org/TR/css-text-3/">CSS Text Level 3</a>。判定方法は<a href="chapter25.xhtml">第25章</a>。</p>
+
+      <h2>判定の区分</h2>
+      <p>CSS：参照仕様の規則を確認する。仕様が許す差や、実装に委ねる改行位置は許容する。</p>
+      <p>組版方針：JLReqの組版上の目標や本書が選んだ体裁を確認する。結果だけからEPUB仕様違反とは判定しない。</p>
+      <p>対応状況・観察：高度なルビ、フォント、検索などの差を記録する。見た目の違いを直ちに不適合としない。</p>
+      <p>挿絵の表示：第23章は原画像を基準に比較し、背景色や画像補正の設定による変化を記録する。自動補正の有無や適用範囲を、リーダー共通の合否条件にはしない。</p>
+      <h2>結果の記録</h2>
+      <p>各ケースを「適合」「不適合」「機能未対応」「フォント不足」「条件未成立」「未実施」のいずれかで記録する。異なる原因がある場合は判定項目を分ける。</p>
+      <p>記録欄：ケースID／試験する規則／結果／リーダーと版／OS・ブラウザと版／実際に使用されたフォント／表示領域の寸法／文字サイズ／実効行間／縦横方向／ページ・スクロール方式／画像の保存先／備考。</p>
+      <p>文字幅や禁則のため対象文字が行端に来なかった場合は条件未成立とする。禁則により前の文字ごと移動した場合は、回避動作として評価する。単に三つの表示が同じという理由だけで未対応とはしない。</p>
+      <h2>比較手順</h2>
+      <ol>
+        <li>初めにリーダーの方向設定を自動へ戻し、書籍指定の縦書きで開く。</li>
+        <li>フォントの読み込み後、同じ本文・寸法の対照例と比較する。ラベルと説明は試験枠の外にある。</li>
+        <li>書籍CSSと実効CSSが異なる場合は、上書きされたプロパティを記録する。フォント候補名だけで実使用フォントを断定しない。</li>
+        <li>行末試験は前置き三字・四字・五字などの複数例を確認する。枠内に強制改行やnowrapを追加して結果を作らない。</li>
+        <li>第29章は通常と拡大文字、小画面と大画面、端末の縦横、単ページと見開きなど利用可能な条件で確認する。</li>
+        <li>前後のページへ移動し、再レイアウト前後に本文の欠落・重複・装飾の切れがないことを確認する。</li>
+      </ol>
+      <h2>比較時の注意</h2>
+      <p>ページ数と改行位置は固定しない。第29章の段落IDを基準に読む位置を追う。ページ境界の試験で一ページに収まった場合は文字を拡大するか画面を縮める。</p>
+      <p>第30章の字下げや約物のアキには複数の組版慣行がある。第28章の熟語ルビと第14章の二重ルビには対応差がある。試験で採用した方針を記録する。</p>
+      <p>EPUBCheckはファイル構造を検証する。各ケースの表示や検索の正しさを保証するものではない。本書にはスクリプト・外部フォント・外部画像を含めない。</p>
+      <h2>参照資料</h2>
+      <p>項目構成はBPS「超縦書」製品紹介と2013年7月のEPUBビューア比較表に着想を得ている。試験の観点と判定には、下記の一次資料を参照する。</p>
+      <p>JLReqは組版要件、CSS各仕様は対応する機能の判定資料として用いる。草案の機能をすべてのリーダーの必須機能として扱わない。</p>
+      <p><a href="https://www.w3.org/TR/jlreq/">JLReq（日本語組版処理の要件）</a></p>
+      <p><a href="https://www.w3.org/TR/css-text-3/">CSS Text Level 3</a></p>
+      <p><a href="https://www.w3.org/TR/css-text-4/">CSS Text Level 4（草案）</a></p>
+      <p><a href="https://www.w3.org/TR/css-ruby-1/">CSS Ruby Level 1（草案）</a></p>
+      <p><a href="https://www.w3.org/TR/css-writing-modes-4/">CSS Writing Modes Level 4</a></p>
+      <p><a href="https://www.w3.org/TR/css-text-decor-3/">CSS Text Decoration Level 3</a></p>
+      <p><a href="https://www.w3.org/TR/css-break-3/">CSS Fragmentation Level 3</a></p>
+      <p><a href="https://www.unicode.org/reports/tr29/">Unicode UAX #29</a></p>
+      <p><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-ruby-element">HTML Standard: ruby</a></p>
+
+    </section>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>同じ親文字への二重ルビ</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+  </head>
+  <body>
+    <section id="chapter14">
+      <h1>14　同じ親文字への二重ルビ</h1>
+      <p class="info">一度だけ記述した親文字「宇宙」に、読み「うちゅう」と訳語「space」を付ける。HTMLの入れ子rubyを使用する。親文字を二つ並べる方法や絶対位置で重ねる方法は使用しない。高度なルビの対応状況を記録する。</p>
+      <p class="reference">参照：<a href="https://www.w3.org/TR/css-ruby-1/">CSS Ruby Level 1（草案）</a> / <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-ruby-element">HTML Standard: ruby</a>。判定方法は<a href="chapter25.xhtml">第25章</a>。</p>
+      <section class="test-case" id="R14-C">
+        <h2>R14-C　対照：片側ルビ</h2>
+        <p class="expected">判定区分：CSS。期待結果：親文字は一組で、読みが右側に付く。</p>
+        <p class="probe " style="inline-size:12em;">遠い<ruby>宇宙<rt>うちゅう</rt></ruby>を観測する。</p>
+      </section>
+      <section class="test-case" id="R14-D">
+        <h2>R14-D　二重ルビ</h2>
+        <p class="expected">判定区分：高度なルビ・対応状況。期待結果：「宇宙」は一組だけ表示され、右に「うちゅう」、左に「space」が対応する。隣接行・親文字と重ならない。未対応の場合は機能未対応と記録する。</p>
+        <p class="probe " style="inline-size:12em; line-height:2.5;">遠い<ruby class="ruby-under"><ruby class="ruby-over">宇宙<rt>うちゅう</rt></ruby><rt lang="en" xml:lang="en">space</rt></ruby>を観測する。</p>
+      </section>
+      <section class="test-case" id="R14-E">
+        <h2>R14-E　二重ルビの行末境界</h2>
+        <p class="expected">判定区分：高度なルビ・対応状況。期待結果：親文字と二方向の注記が対応を保ち、表示領域から欠けない。改行位置自体には実装差を許容する。</p>
+        <p class="probe " style="inline-size:5em; line-height:2.5;">天地玄<ruby class="ruby-under"><ruby class="ruby-over">宇宙<rt>うちゅう</rt></ruby><rt lang="en" xml:lang="en">space</rt></ruby>日月星辰。</p>
+      </section>
+
+    </section>
+  </body>
+</html>

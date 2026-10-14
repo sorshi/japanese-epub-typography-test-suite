@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+/* 表紙と奥付だけの体裁にして、検証本文のCSSを変えないルン。 */
+html { writing-mode: horizontal-tb; -webkit-writing-mode: horizontal-tb; }
+body {
+    margin: 8%;
+    color: inherit;
+    font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    font-size: 1em;
+    line-height: 1.75;
+}
+h1, h2, h3 {
+    line-height: 1.4;
+    break-after: avoid;
+    page-break-after: avoid;
+}
+h1 { font-size: 1.6em; margin: 0 0 1.5em; }
+h2 { font-size: 1.15em; margin: 2em 0 .8em; }
+p { margin: 0 0 1em; }
+a { color: inherit; text-decoration: underline; }
+dl { margin: 0; }
+dt { margin-top: 1.1em; font-size: .8em; font-weight: bold; }
+dd { margin: .2em 0 0; }
+.edition-line { font-size: .85em; letter-spacing: .05em; }
+.publication-cover { margin: 0; padding: 0; }
+.cover-page { margin: 0; padding: 0; }
+.cover-art { display: block; width: 100%; height: auto; max-width: 1200px; margin: 0 auto; }
+.colophon { max-width: 40em; margin: 0 auto; }
+.colophon-rule { border: 0; border-top: 1px solid currentColor; margin: 2em 0; }
+.small-note { font-size: .85em; }
+.license-text { font-family: serif; line-height: 1.6; }
+.license-text p { text-align: start; }

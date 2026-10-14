@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>和欧文混植・縦中横の境界</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+  </head>
+  <body>
+    <section id="chapter31">
+      <h1>31　和欧文混植・縦中横の境界</h1>
+      <p class="info">英語部分はlangとxml:langの両方を指定する。自動の折り返しと、U+00A0による著者の明示指定を区別する。</p>
+      <p class="reference">参照：<a href="https://www.w3.org/TR/jlreq/">JLReq（日本語組版処理の要件）</a> / <a href="https://www.w3.org/TR/css-text-3/">CSS Text Level 3</a> / <a href="https://www.w3.org/TR/css-writing-modes-4/">CSS Writing Modes Level 4</a>。判定方法は<a href="chapter25.xhtml">第25章</a>。</p>
+      <section class="test-case" id="M31-WORD">
+        <h2>M31-WORD　和文と欧文単語</h2>
+        <p class="expected">判定区分：CSS。期待結果：normal指定で短い欧文単語の内部を不要に分断しない。日本語との境界のアキは観察として記録する。</p>
+        <p class="probe " style="inline-size:8em; line-break:strict;">星を<span lang="en" xml:lang="en">sky</span>と記し、<span lang="en" xml:lang="en">star</span>を探す。</p>
+      </section>
+      <section class="test-case" id="M31-NUM">
+        <h2>M31-NUM　数値・小数点・単位</h2>
+        <p class="expected">判定区分：組版方針・観察。期待結果：1,234、12.5%、100kmの向きと分割位置を記録する。数値と単位の一体化は書籍の指定有無も合わせて判定する。</p>
+        <p class="probe " style="inline-size:8em;">距離1,234メートル、割合12.5%、速度100km。</p>
+      </section>
+      <section class="test-case" id="M31-NBSP">
+        <h2>M31-NBSP　単位との分離を禁止する指定</h2>
+        <p class="expected">判定区分：CSS。期待結果：12とkmの間のU+00A0では改行しない。通常の空白との対照を比較する。</p>
+        <p class="probe " style="inline-size:5em;">距離<span lang="en" xml:lang="en">12&#160;km</span>先。距離<span lang="en" xml:lang="en">12 km</span>先。</p>
+      </section>
+      <section class="test-case" id="M31-TCY-3">
+        <h2>M31-TCY-3　行末の縦中横 / 前置き3字</h2>
+        <p class="expected">判定区分：CSS。期待結果：12を横並びの一まとまりとして扱い、内部で折り返さない。隣の括弧・句点と重ならない。</p>
+        <p class="probe " style="inline-size:5em; line-break:strict;">天地玄（<span class="tcy">12</span>）。日月。</p>
+      </section>
+      <section class="test-case" id="M31-TCY-4">
+        <h2>M31-TCY-4　行末の縦中横 / 前置き4字</h2>
+        <p class="expected">判定区分：CSS。期待結果：12を横並びの一まとまりとして扱い、内部で折り返さない。隣の括弧・句点と重ならない。</p>
+        <p class="probe " style="inline-size:5em; line-break:strict;">天地玄黄（<span class="tcy">12</span>）。日月。</p>
+      </section>
+      <section class="test-case" id="M31-TCY-5">
+        <h2>M31-TCY-5　行末の縦中横 / 前置き5字</h2>
+        <p class="expected">判定区分：CSS。期待結果：12を横並びの一まとまりとして扱い、内部で折り返さない。隣の括弧・句点と重ならない。</p>
+        <p class="probe " style="inline-size:5em; line-break:strict;">天地玄黄宇（<span class="tcy">12</span>）。日月。</p>
+      </section>
+      <section class="test-case" id="M31-DECOR">
+        <h2>M31-DECOR　縦中横と圏点・ルビ</h2>
+        <p class="expected">判定区分：CSS。期待結果：縦中横への圏点は結合された一まとまりを対象にする。読みと親文字12の対応を保ち、隣の文字と衝突しない。</p>
+        <p class="probe " style="inline-size:8em; line-height:2.2;">第<span class="tcy emphasis">12</span>区。第<ruby><span class="tcy">12</span><rt>じゅうに</rt></ruby>区。</p>
+      </section>
+
+    </section>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>ぶら下げ force-end</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+  </head>
+  <body>
+    <section id="chapter05">
+      <h1>05　ぶら下げ force-end</h1>
+      <p class="info">同一本文・同一寸法のnoneと比較する。ラベルは試験枠の外に置く。枠の内側の余白を除いた内容領域を行端とし、句読点の座標と改行位置を記録する。第4・5章のFIT、EDGEは共通の本文。</p>
+      <p class="reference">参照：<a href="https://www.w3.org/TR/css-text-4/">CSS Text Level 4（草案）</a>。判定方法は<a href="chapter25.xhtml">第25章</a>。</p>
+      <section class="test-case" id="H05-FIT-none">
+        <h2>H05-FIT-none　FIT / none</h2>
+        <p class="expected">判定区分：CSS。期待結果：先頭の句点が行内に収まる長さ。force-endは句点を行の測定から外し、allow-endは収まる場合に強制的にはぶら下げない。 全角八字相当の枠。フォントの字幅・約物詰め・実効CSSで条件が崩れた場合は条件未成立とする。</p>
+        <p class="probe " style="inline-size:8em; hanging-punctuation:none; text-align:justify; line-break:strict;">天地玄黄宇宙。日月盈昃辰宿列張寒来暑往秋収冬蔵。</p>
+      </section>
+      <section class="test-case" id="H05-FIT-force-end">
+        <h2>H05-FIT-force-end　FIT / force-end</h2>
+        <p class="expected">判定区分：CSS。期待結果：先頭の句点が行内に収まる長さ。force-endは句点を行の測定から外し、allow-endは収まる場合に強制的にはぶら下げない。 全角八字相当の枠。フォントの字幅・約物詰め・実効CSSで条件が崩れた場合は条件未成立とする。</p>
+        <p class="probe " style="inline-size:8em; hanging-punctuation:force-end; text-align:justify; line-break:strict;">天地玄黄宇宙。日月盈昃辰宿列張寒来暑往秋収冬蔵。</p>
+      </section>
+      <section class="test-case" id="H05-EDGE-none">
+        <h2>H05-EDGE-none　EDGE / none</h2>
+        <p class="expected">判定区分：CSS。期待結果：句点の直前までで八字。句点をぶら下げない場合との折り返し差を確認する。 全角八字相当の枠。フォントの字幅・約物詰め・実効CSSで条件が崩れた場合は条件未成立とする。</p>
+        <p class="probe " style="inline-size:8em; hanging-punctuation:none; text-align:justify; line-break:strict;">天地玄黄宇宙洪荒。日月盈昃辰宿列張寒来暑往秋収冬蔵。</p>
+      </section>
+      <section class="test-case" id="H05-EDGE-force-end">
+        <h2>H05-EDGE-force-end　EDGE / force-end</h2>
+        <p class="expected">判定区分：CSS。期待結果：句点の直前までで八字。句点をぶら下げない場合との折り返し差を確認する。 全角八字相当の枠。フォントの字幅・約物詰め・実効CSSで条件が崩れた場合は条件未成立とする。</p>
+        <p class="probe " style="inline-size:8em; hanging-punctuation:force-end; text-align:justify; line-break:strict;">天地玄黄宇宙洪荒。日月盈昃辰宿列張寒来暑往秋収冬蔵。</p>
+      </section>
+
+    </section>
+  </body>
+</html>

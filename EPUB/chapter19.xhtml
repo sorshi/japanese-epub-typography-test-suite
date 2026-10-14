@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+  <head><meta charset="UTF-8"/><title>mixed writing-mode</title><link rel="stylesheet" type="text/css" href="style.css"/></head>
+  <body>
+    <section id="B19">
+      <h1>19　mixed writing-mode</h1>
+      <p class="info">検証内容：vertical-rlの本文中へhorizontal-tbの領域を入れ子にする。</p>
+      <p class="expected">ケースID：B19。期待結果：指定領域だけが横書きになり、その後の本文は縦書きへ戻る。 判定区分・記録方法は第25章。</p>
+      <p>ここは縦書きの文章。<span class="horizontal" style="display:inline-block; width:10em; padding:.3em; border:1px solid #555">This is horizontal text.<br />横書きの日本語。</span>この後は縦書きに戻る。</p>
+      <div class="horizontal" style="width:14em; border:1px solid #555; padding:.5em"><p>横書きブロックの中に、<span style="writing-mode:vertical-rl;display:inline-block;height:6em;border:1px dashed #777">縦書きの入れ子</span>がある。</p></div>
+    </section>
+  </body>
+</html>

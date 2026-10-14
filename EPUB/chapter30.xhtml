@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>約物のアキ・段落整形</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+  </head>
+  <body>
+    <section id="chapter30">
+      <h1>30　約物のアキ・段落整形</h1>
+      <p class="info">約物の詰め方や字下げの慣行を比較する。各ケースの指定した体裁を評価し、すべての日本語文書に同じ体裁を要求しない。</p>
+      <p class="reference">参照：<a href="https://www.w3.org/TR/jlreq/">JLReq（日本語組版処理の要件）</a> / <a href="https://www.w3.org/TR/css-text-3/">CSS Text Level 3</a> / <a href="https://www.w3.org/TR/css-text-4/">CSS Text Level 4（草案）</a>。判定方法は<a href="chapter25.xhtml">第25章</a>。</p>
+      <section class="test-case" id="S30-P-space-all">
+        <h2>S30-P-space-all　約物のアキ / space-all</h2>
+        <p class="expected">判定区分：組版方針・CSS草案の対応状況。期待結果：連続する括弧・句読点のアキを比較する。text-spacing-trim未対応は機能未対応とする。両方が同じ表示でも、文字が実際に対象位置へ来たかを先に確認する。</p>
+        <p class="probe " style="inline-size:10em; text-spacing-trim:space-all;">彼は「星」と言った。「月」とも書いた。『記録（第一）』を開くと、海・山・空が並んでいた。</p>
+      </section>
+      <section class="test-case" id="S30-P-trim-both">
+        <h2>S30-P-trim-both　約物のアキ / trim-both</h2>
+        <p class="expected">判定区分：組版方針・CSS草案の対応状況。期待結果：連続する括弧・句読点のアキを比較する。text-spacing-trim未対応は機能未対応とする。両方が同じ表示でも、文字が実際に対象位置へ来たかを先に確認する。</p>
+        <p class="probe " style="inline-size:10em; text-spacing-trim:trim-both;">彼は「星」と言った。「月」とも書いた。『記録（第一）』を開くと、海・山・空が並んでいた。</p>
+      </section>
+      <section class="test-case" id="S30-I-0">
+        <h2>S30-I-0　括弧で始まる段落 / 字下げ0</h2>
+        <p class="expected">判定区分：組版方針。期待結果：指定した字下げで始まる。括弧の字面と文字の送り幅を区別し、採用する段落体裁を記録する。</p>
+        <p class="probe " style="inline-size:10em; text-indent:0;">「星の位置を記録する」と手帳に書いた。港の灯りは遠くに見えた。</p>
+      </section>
+      <section class="test-case" id="S30-I-1">
+        <h2>S30-I-1　括弧で始まる段落 / 字下げ1em</h2>
+        <p class="expected">判定区分：組版方針。期待結果：指定した字下げで始まる。括弧の字面と文字の送り幅を区別し、採用する段落体裁を記録する。</p>
+        <p class="probe " style="inline-size:10em; text-indent:1em;">「星の位置を記録する」と手帳に書いた。港の灯りは遠くに見えた。</p>
+      </section>
+      <section class="test-case" id="S30-LAST-auto">
+        <h2>S30-LAST-auto　段落最終行 / auto</h2>
+        <p class="expected">判定区分：CSS。期待結果：通常行は両端揃え。autoの最終行は始端に寄り、justifyの最終行は字間を調整する。最終行が短い条件で判定する。</p>
+        <p class="probe " style="inline-size:10em; text-align:justify; text-align-last:auto;">天地玄黄宇宙洪荒日月盈昃辰宿列張寒来暑往秋収冬蔵星月。</p>
+      </section>
+      <section class="test-case" id="S30-LAST-justify">
+        <h2>S30-LAST-justify　段落最終行 / justify</h2>
+        <p class="expected">判定区分：CSS。期待結果：通常行は両端揃え。autoの最終行は始端に寄り、justifyの最終行は字間を調整する。最終行が短い条件で判定する。</p>
+        <p class="probe " style="inline-size:10em; text-align:justify; text-align-last:justify;">天地玄黄宇宙洪荒日月盈昃辰宿列張寒来暑往秋収冬蔵星月。</p>
+      </section>
+      <section class="test-case" id="S30-BR">
+        <h2>S30-BR　強制改行の直前行</h2>
+        <p class="expected">判定区分：CSS。期待結果：brで終わる行と段落最終行の揃えを記録する。text-align-last:autoで不要に引き伸ばされない。</p>
+        <p class="probe " style="inline-size:10em; text-align:justify; text-align-last:auto;">短い行。<br/>次の行は自然に折り返すため少し長い文章にする。</p>
+      </section>
+      <section class="test-case" id="S30-END">
+        <h2>S30-END　字上げ・末尾揃え</h2>
+        <p class="expected">判定区分：組版方針。期待結果：本文のインライン終端から二字分内側に末尾を揃える。縦書きでは下側に余白ができる。</p>
+        <p class="probe " style="inline-size:10em; text-align:end; padding-inline-end:2em;">観測所記録係</p>
+      </section>
+
+    </section>
+  </body>
+</html>

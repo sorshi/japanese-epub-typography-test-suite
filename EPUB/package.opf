@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="pub-id" xml:lang="ja" prefix="rendition: http://www.idpf.org/vocab/rendition/#">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <dc:identifier id="pub-id">urn:uuid:6081f129-1058-50ee-8cb9-8751d736d3de</dc:identifier>
+    <dc:title>日本語縦書き組版テスト v1</dc:title>
+    <dc:language>ja</dc:language>
+    <dc:creator>sorshi</dc:creator>
+    <dc:publisher>sorshi</dc:publisher>
+    <dc:date>2026-10-14</dc:date>
+    <dc:rights>Copyright (c) 2026 sorshi. MIT License. Source code, text, original artwork, and built EPUB.</dc:rights>
+    <dc:description>日本語縦書きの基本機能・境界条件と挿絵の表示を検証する全33章の独立テスト集</dc:description>
+    <meta property="dcterms:modified">2026-10-14T11:17:01Z</meta>
+    <meta property="rendition:layout">reflowable</meta>
+    <meta property="rendition:flow">paginated</meta>
+    <meta property="rendition:spread">auto</meta>
+  </metadata>
+  <manifest>
+    <item id="css" href="style.css" media-type="text/css"/>
+    <item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>
+    <item id="publication-css" href="publication.css" media-type="text/css"/>
+    <item id="cover-image" href="cover.png" media-type="image/png" properties="cover-image"/>
+    <item id="cover" href="cover.xhtml" media-type="application/xhtml+xml"/>
+    <item id="colophon" href="colophon.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c1" href="chapter01.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c2" href="chapter02.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c3" href="chapter03.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c4" href="chapter04.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c5" href="chapter05.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c6" href="chapter06.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c7" href="chapter07.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c8" href="chapter08.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c9" href="chapter09.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c10" href="chapter10.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c11" href="chapter11.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c12" href="chapter12.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c13" href="chapter13.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c14" href="chapter14.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c15" href="chapter15.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c16" href="chapter16.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c17" href="chapter17.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c18" href="chapter18.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c19" href="chapter19.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c20" href="chapter20.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c21" href="chapter21.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c22" href="chapter22.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c23" href="chapter23.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c24" href="chapter24.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c25" href="chapter25.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c26" href="chapter26.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c27" href="chapter27.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c28" href="chapter28.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c29" href="chapter29.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c30" href="chapter30.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c31" href="chapter31.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c32" href="chapter32.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c33" href="chapter33.xhtml" media-type="application/xhtml+xml"/>
+    <item id="img1" href="images/blank-white.png" media-type="image/png"/>
+    <item id="img2" href="images/color-shapes.jpg" media-type="image/jpeg"/>
+    <item id="img3" href="images/color-shapes.png" media-type="image/png"/>
+    <item id="img4" href="images/dense-white-20.png" media-type="image/png"/>
+    <item id="img5" href="images/dense-white-5.png" media-type="image/png"/>
+    <item id="img6" href="images/offwhite-shapes.png" media-type="image/png"/>
+    <item id="img7" href="images/sparse-ink-0_3.png" media-type="image/png"/>
+    <item id="img8" href="images/sparse-ink-1.png" media-type="image/png"/>
+    <item id="img9" href="images/transparent-shapes.png" media-type="image/png"/>
+    <item id="img10" href="images/white-shapes.jpg" media-type="image/jpeg"/>
+    <item id="img11" href="images/white-shapes.png" media-type="image/png"/>
+  </manifest>
+  <spine page-progression-direction="rtl">
+    <itemref idref="cover"/>
+    <itemref idref="c1"/>
+    <itemref idref="c2"/>
+    <itemref idref="c3"/>
+    <itemref idref="c4"/>
+    <itemref idref="c5"/>
+    <itemref idref="c6"/>
+    <itemref idref="c7"/>
+    <itemref idref="c8"/>
+    <itemref idref="c9"/>
+    <itemref idref="c10"/>
+    <itemref idref="c11"/>
+    <itemref idref="c12"/>
+    <itemref idref="c13"/>
+    <itemref idref="c14"/>
+    <itemref idref="c15"/>
+    <itemref idref="c16"/>
+    <itemref idref="c17"/>
+    <itemref idref="c18"/>
+    <itemref idref="c19"/>
+    <itemref idref="c20"/>
+    <itemref idref="c21"/>
+    <itemref idref="c22"/>
+    <itemref idref="c23"/>
+    <itemref idref="c24"/>
+    <itemref idref="c25"/>
+    <itemref idref="c26"/>
+    <itemref idref="c27"/>
+    <itemref idref="c28"/>
+    <itemref idref="c29"/>
+    <itemref idref="c30"/>
+    <itemref idref="c31"/>
+    <itemref idref="c32"/>
+    <itemref idref="c33"/>
+    <itemref idref="colophon"/>
+  </spine>
+</package>

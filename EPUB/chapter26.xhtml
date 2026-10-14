@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>行頭・行末禁則マトリクス</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+  </head>
+  <body>
+    <section id="chapter26">
+      <h1>26　行頭・行末禁則マトリクス</h1>
+      <p class="info">文字種ごとに行端の前後を試す。三段階の禁則で同じ文字列を使用する。前置き文字は位置調整のための独立した試験文字列であり、文章としての自然さは判定しない。</p>
+      <p class="reference">参照：<a href="https://www.w3.org/TR/jlreq/">JLReq（日本語組版処理の要件）</a> / <a href="https://www.w3.org/TR/css-text-3/">CSS Text Level 3</a>。判定方法は<a href="chapter25.xhtml">第25章</a>。</p>
+      <section class="test-case" id="K26-END-01"><h2>K26-END-01　行頭に置かない句読点・終わり括弧：、（U+3001）</h2>
+        <p class="expected">判定区分：CSS。期待結果：この試験の文字が行頭に単独で残らない。 許容された位置での改行は必須ではない。各モードの三例は前置き三字・四字・五字。行長は四字相当。</p>
+        <h3>loose</h3>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄、星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄、星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄宇、星日月。</p>
+        <h3>normal</h3>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄、星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄、星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄宇、星日月。</p>
+        <h3>strict</h3>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄、星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄、星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄宇、星日月。</p>
+      </section>
+      <section class="test-case" id="K26-END-02"><h2>K26-END-02　行頭に置かない句読点・終わり括弧：。（U+3002）</h2>
+        <p class="expected">判定区分：CSS。期待結果：この試験の文字が行頭に単独で残らない。 許容された位置での改行は必須ではない。各モードの三例は前置き三字・四字・五字。行長は四字相当。</p>
+        <h3>loose</h3>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄。星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄。星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄宇。星日月。</p>
+        <h3>normal</h3>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄。星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄。星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄宇。星日月。</p>
+        <h3>strict</h3>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄。星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄。星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄宇。星日月。</p>
+      </section>
+      <section class="test-case" id="K26-END-03"><h2>K26-END-03　行頭に置かない句読点・終わり括弧：）（U+FF09）</h2>
+        <p class="expected">判定区分：CSS。期待結果：この試験の文字が行頭に単独で残らない。 許容された位置での改行は必須ではない。各モードの三例は前置き三字・四字・五字。行長は四字相当。</p>
+        <h3>loose</h3>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄）星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄）星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄宇）星日月。</p>
+        <h3>normal</h3>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄）星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄）星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄宇）星日月。</p>
+        <h3>strict</h3>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄）星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄）星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄宇）星日月。</p>
+      </section>
+      <section class="test-case" id="K26-END-04"><h2>K26-END-04　行頭に置かない句読点・終わり括弧：」（U+300D）</h2>
+        <p class="expected">判定区分：CSS。期待結果：この試験の文字が行頭に単独で残らない。 許容された位置での改行は必須ではない。各モードの三例は前置き三字・四字・五字。行長は四字相当。</p>
+        <h3>loose</h3>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄」星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄」星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄宇」星日月。</p>
+        <h3>normal</h3>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄」星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄」星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄宇」星日月。</p>
+        <h3>strict</h3>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄」星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄」星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄宇」星日月。</p>
+      </section>
+      <section class="test-case" id="K26-END-05"><h2>K26-END-05　行頭に置かない句読点・終わり括弧：』（U+300F）</h2>
+        <p class="expected">判定区分：CSS。期待結果：この試験の文字が行頭に単独で残らない。 許容された位置での改行は必須ではない。各モードの三例は前置き三字・四字・五字。行長は四字相当。</p>
+        <h3>loose</h3>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄』星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄』星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄宇』星日月。</p>
+        <h3>normal</h3>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄』星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄』星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄宇』星日月。</p>
+        <h3>strict</h3>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄』星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄』星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄宇』星日月。</p>
+      </section>
+      <section class="test-case" id="K26-OPEN-01"><h2>K26-OPEN-01　行末に置かない始め括弧：（（U+FF08）</h2>
+        <p class="expected">判定区分：CSS。期待結果：始め括弧だけを行末へ残さない。 許容された位置での改行は必須ではない。各モードの三例は前置き三字・四字・五字。行長は四字相当。</p>
+        <h3>loose</h3>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄（星）日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄（星）日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄宇（星）日月。</p>
+        <h3>normal</h3>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄（星）日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄（星）日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄宇（星）日月。</p>
+        <h3>strict</h3>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄（星）日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄（星）日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄宇（星）日月。</p>
+      </section>
+      <section class="test-case" id="K26-OPEN-02"><h2>K26-OPEN-02　行末に置かない始め括弧：「（U+300C）</h2>
+        <p class="expected">判定区分：CSS。期待結果：始め括弧だけを行末へ残さない。 許容された位置での改行は必須ではない。各モードの三例は前置き三字・四字・五字。行長は四字相当。</p>
+        <h3>loose</h3>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄「星」日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄「星」日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄宇「星」日月。</p>
+        <h3>normal</h3>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄「星」日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄「星」日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄宇「星」日月。</p>
+        <h3>strict</h3>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄「星」日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄「星」日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄宇「星」日月。</p>
+      </section>
+      <section class="test-case" id="K26-OPEN-03"><h2>K26-OPEN-03　行末に置かない始め括弧：『（U+300E）</h2>
+        <p class="expected">判定区分：CSS。期待結果：始め括弧だけを行末へ残さない。 許容された位置での改行は必須ではない。各モードの三例は前置き三字・四字・五字。行長は四字相当。</p>
+        <h3>loose</h3>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄『星』日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄『星』日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄宇『星』日月。</p>
+        <h3>normal</h3>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄『星』日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄『星』日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄宇『星』日月。</p>
+        <h3>strict</h3>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄『星』日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄『星』日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄宇『星』日月。</p>
+      </section>
+      <section class="test-case" id="K26-KANA-01"><h2>K26-KANA-01　小書き仮名・長音：ゃ（U+3083）</h2>
+        <p class="expected">判定区分：CSS。期待結果：normal/strictでは対象文字直前の改行を禁止する。looseでは許容する。 許容された位置での改行は必須ではない。各モードの三例は前置き三字・四字・五字。行長は四字相当。</p>
+        <h3>loose</h3>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄ゃ星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄ゃ星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄宇ゃ星日月。</p>
+        <h3>normal</h3>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄ゃ星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄ゃ星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄宇ゃ星日月。</p>
+        <h3>strict</h3>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄ゃ星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄ゃ星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄宇ゃ星日月。</p>
+      </section>
+      <section class="test-case" id="K26-KANA-02"><h2>K26-KANA-02　小書き仮名・長音：っ（U+3063）</h2>
+        <p class="expected">判定区分：CSS。期待結果：normal/strictでは対象文字直前の改行を禁止する。looseでは許容する。 許容された位置での改行は必須ではない。各モードの三例は前置き三字・四字・五字。行長は四字相当。</p>
+        <h3>loose</h3>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄っ星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄っ星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄宇っ星日月。</p>
+        <h3>normal</h3>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄っ星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄っ星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄宇っ星日月。</p>
+        <h3>strict</h3>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄っ星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄っ星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄宇っ星日月。</p>
+      </section>
+      <section class="test-case" id="K26-KANA-03"><h2>K26-KANA-03　小書き仮名・長音：ー（U+30FC）</h2>
+        <p class="expected">判定区分：CSS。期待結果：normal/strictでは対象文字直前の改行を禁止する。looseでは許容する。 許容された位置での改行は必須ではない。各モードの三例は前置き三字・四字・五字。行長は四字相当。</p>
+        <h3>loose</h3>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄ー星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄ー星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄宇ー星日月。</p>
+        <h3>normal</h3>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄ー星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄ー星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄宇ー星日月。</p>
+        <h3>strict</h3>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄ー星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄ー星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄宇ー星日月。</p>
+      </section>
+      <section class="test-case" id="K26-ITER-01"><h2>K26-ITER-01　踊り字：々（U+3005）</h2>
+        <p class="expected">判定区分：CSS。期待結果：normal/strictでは対象文字直前の改行を禁止する。looseでは許容する。 許容された位置での改行は必須ではない。各モードの三例は前置き三字・四字・五字。行長は四字相当。</p>
+        <h3>loose</h3>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄々星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄々星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄宇々星日月。</p>
+        <h3>normal</h3>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄々星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄々星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄宇々星日月。</p>
+        <h3>strict</h3>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄々星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄々星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄宇々星日月。</p>
+      </section>
+      <section class="test-case" id="K26-ITER-02"><h2>K26-ITER-02　踊り字：ゝ（U+309D）</h2>
+        <p class="expected">判定区分：CSS。期待結果：normal/strictでは対象文字直前の改行を禁止する。looseでは許容する。 許容された位置での改行は必須ではない。各モードの三例は前置き三字・四字・五字。行長は四字相当。</p>
+        <h3>loose</h3>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄ゝ星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄ゝ星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄宇ゝ星日月。</p>
+        <h3>normal</h3>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄ゝ星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄ゝ星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄宇ゝ星日月。</p>
+        <h3>strict</h3>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄ゝ星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄ゝ星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄宇ゝ星日月。</p>
+      </section>
+      <section class="test-case" id="K26-ITER-03"><h2>K26-ITER-03　踊り字：ヾ（U+30FE）</h2>
+        <p class="expected">判定区分：CSS。期待結果：normal/strictでは対象文字直前の改行を禁止する。looseでは許容する。 許容された位置での改行は必須ではない。各モードの三例は前置き三字・四字・五字。行長は四字相当。</p>
+        <h3>loose</h3>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄ヾ星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄ヾ星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄宇ヾ星日月。</p>
+        <h3>normal</h3>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄ヾ星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄ヾ星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄宇ヾ星日月。</p>
+        <h3>strict</h3>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄ヾ星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄ヾ星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄宇ヾ星日月。</p>
+      </section>
+      <section class="test-case" id="K26-WAVE-01"><h2>K26-WAVE-01　波ダッシュ：〜（U+301C）</h2>
+        <p class="expected">判定区分：CSS。期待結果：日本語のnormal/looseでは直前の改行を許容し、strictでは禁止する。 許容された位置での改行は必須ではない。各モードの三例は前置き三字・四字・五字。行長は四字相当。</p>
+        <h3>loose</h3>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄〜星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄〜星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:loose;">天地玄黄宇〜星日月。</p>
+        <h3>normal</h3>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄〜星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄〜星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:normal;">天地玄黄宇〜星日月。</p>
+        <h3>strict</h3>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄〜星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄〜星日月。</p>
+        <p class="probe" style="inline-size:4em; line-break:strict;">天地玄黄宇〜星日月。</p>
+      </section>
+
+    </section>
+  </body>
+</html>

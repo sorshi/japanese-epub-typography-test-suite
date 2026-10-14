@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>圏点の対象・装飾の衝突</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+  </head>
+  <body>
+    <section id="chapter32">
+      <h1>32　圏点の対象・装飾の衝突</h1>
+      <p class="info">付ける対象と除外する対象、左右位置、ルビとの共存を独立して評価する。</p>
+      <p class="reference">参照：<a href="https://www.w3.org/TR/css-text-decor-3/">CSS Text Decoration Level 3</a> / <a href="https://www.w3.org/TR/css-ruby-1/">CSS Ruby Level 1（草案）</a> / <a href="https://www.w3.org/TR/css-writing-modes-4/">CSS Writing Modes Level 4</a>。判定方法は<a href="chapter25.xhtml">第25章</a>。</p>
+      <section class="test-case" id="E32-SKIP">
+        <h2>E32-SKIP　句読点・括弧・空白</h2>
+        <p class="expected">判定区分：CSS。期待結果：天・地・玄・黄の四文字に圏点が付き、この例の句読点・括弧・半角空白・全角空白には付かない。</p>
+        <p class="probe " style="inline-size:8em;"><span class="emphasis">天、地。「玄」 黄　</span></p>
+      </section>
+      <section class="test-case" id="E32-SYMBOL">
+        <h2>E32-SYMBOL　記号の例外</h2>
+        <p class="expected">判定区分：CSS。期待結果：この例の#・%・&amp;には圏点を付ける。すべての記号を一律に除外する判定をしない。</p>
+        <p class="probe " style="inline-size:8em;"><span class="emphasis">星#月%海&amp;</span></p>
+      </section>
+      <section class="test-case" id="E32-right">
+        <h2>E32-right　圏点の位置 / right</h2>
+        <p class="expected">判定区分：CSS。期待結果：縦書きの右側に圏点が付き、字面と重ならない。</p>
+        <p class="probe " style="inline-size:8em;"><span class="emphasis" style="text-emphasis-position:over right;">天体観測</span></p>
+      </section>
+      <section class="test-case" id="E32-left">
+        <h2>E32-left　圏点の位置 / left</h2>
+        <p class="expected">判定区分：CSS。期待結果：縦書きの左側に圏点が付き、字面と重ならない。</p>
+        <p class="probe " style="inline-size:8em;"><span class="emphasis" style="text-emphasis-position:over left;">天体観測</span></p>
+      </section>
+      <section class="test-case" id="E32-RUBY">
+        <h2>E32-RUBY　ルビと圏点・通常行間</h2>
+        <p class="expected">判定区分：CSS。期待結果：親文字の右ルビと左圏点を識別でき、読みには圏点を継承させない。親文字・隣接行が欠けない。</p>
+        <p class="probe " style="inline-size:6em; line-height:2.5;"><ruby class="emphasis emphasis-left">星空<rt class="no-emphasis">ほしぞら</rt></ruby>を見上げ、<ruby class="emphasis emphasis-left">流星<rt class="no-emphasis">りゅうせい</rt></ruby>を追う。</p>
+      </section>
+      <section class="test-case" id="E32-COLLIDE">
+        <h2>E32-COLLIDE　同じ側のルビと圏点</h2>
+        <p class="expected">判定区分：装飾のストレス・観察。期待結果：同じ右側へ配置したルビと圏点の距離・重なりを記録する。固定の狭い行間が原因の衝突は通常行間の結果と分ける。</p>
+        <p class="probe " style="inline-size:6em; line-height:1.2;"><ruby class="emphasis">星空<rt class="no-emphasis">ほしぞら</rt></ruby>を見上げ、<ruby class="emphasis">流星<rt class="no-emphasis">りゅうせい</rt></ruby>を追う。</p>
+      </section>
+
+    </section>
+  </body>
+</html>

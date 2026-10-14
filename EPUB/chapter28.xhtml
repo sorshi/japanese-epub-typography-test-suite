@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>ルビの対応・折り返し</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+  </head>
+  <body>
+    <section id="chapter28">
+      <h1>28　ルビの対応・折り返し</h1>
+      <p class="info">基本構造は第3章、同じ親文字への二重ルビは第14章。ここでは親文字と読みの長さ、周囲の文字、行端、行間を変える。</p>
+      <p class="reference">参照：<a href="https://www.w3.org/TR/jlreq/">JLReq（日本語組版処理の要件）</a> / <a href="https://www.w3.org/TR/css-ruby-1/">CSS Ruby Level 1（草案）</a>。判定方法は<a href="chapter25.xhtml">第25章</a>。</p>
+      <section class="test-case" id="R28-M">
+        <h2>R28-M　モノルビの折り返し</h2>
+        <p class="expected">判定区分：CSS。期待結果：一文字ごとの読みを保って折り返す。親文字だけ、または読みだけが次の行へ置き去りにならない。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄<ruby>山<rt>やま</rt></ruby><ruby>川<rt>かわ</rt></ruby>日月。</p>
+      </section>
+      <section class="test-case" id="R28-G">
+        <h2>R28-G　グループルビの折り返し</h2>
+        <p class="expected">判定区分：CSS。期待結果：明日全体と「あした」の対応を保つ。分割されない語として次行へ送る挙動を確認する。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄<ruby>明日<rt>あした</rt></ruby>日月。</p>
+      </section>
+      <section class="test-case" id="R28-J-separate">
+        <h2>R28-J-separate　熟語ルビの配分 / separate</h2>
+        <p class="expected">判定区分：高度なルビ・対応状況。期待結果：一字目「無」と「む」、二字目「常」と「じょう」の対応を保持する。separate/auto/mergeの配分と折り返しを記録する。autoの配分方法には実装差を許容する。プロパティ未対応は機能未対応。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄<ruby style="ruby-merge:separate">無<rt>む</rt>常<rt>じょう</rt></ruby>日月。</p>
+      </section>
+      <section class="test-case" id="R28-J-auto">
+        <h2>R28-J-auto　熟語ルビの配分 / auto</h2>
+        <p class="expected">判定区分：高度なルビ・対応状況。期待結果：一字目「無」と「む」、二字目「常」と「じょう」の対応を保持する。separate/auto/mergeの配分と折り返しを記録する。autoの配分方法には実装差を許容する。プロパティ未対応は機能未対応。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄<ruby style="ruby-merge:auto">無<rt>む</rt>常<rt>じょう</rt></ruby>日月。</p>
+      </section>
+      <section class="test-case" id="R28-J-merge">
+        <h2>R28-J-merge　熟語ルビの配分 / merge</h2>
+        <p class="expected">判定区分：高度なルビ・対応状況。期待結果：一字目「無」と「む」、二字目「常」と「じょう」の対応を保持する。separate/auto/mergeの配分と折り返しを記録する。autoの配分方法には実装差を許容する。プロパティ未対応は機能未対応。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄<ruby style="ruby-merge:merge">無<rt>む</rt>常<rt>じょう</rt></ruby>日月。</p>
+      </section>
+      <section class="test-case" id="R28-L-1">
+        <h2>R28-L-1　長いルビと隣接文字</h2>
+        <p class="expected">判定区分：CSS。期待結果：長いルビの張り出し・親文字のアキ・行端での配置を記録する。隣接するルビと衝突せず、文字が欠けない。正確な張り出し量を一律に固定しない。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;"><ruby>志<rt>こころざし</rt></ruby>を記す。</p>
+      </section>
+      <section class="test-case" id="R28-L-2">
+        <h2>R28-L-2　長いルビと隣接文字</h2>
+        <p class="expected">判定区分：CSS。期待結果：長いルビの張り出し・親文字のアキ・行端での配置を記録する。隣接するルビと衝突せず、文字が欠けない。正確な張り出し量を一律に固定しない。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">この<ruby>志<rt>こころざし</rt></ruby>を記す。</p>
+      </section>
+      <section class="test-case" id="R28-L-3">
+        <h2>R28-L-3　長いルビと隣接文字</h2>
+        <p class="expected">判定区分：CSS。期待結果：長いルビの張り出し・親文字のアキ・行端での配置を記録する。隣接するルビと衝突せず、文字が欠けない。正確な張り出し量を一律に固定しない。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;"><ruby>志<rt>こころざし</rt></ruby><ruby>輝<rt>かがやき</rt></ruby>を記す。</p>
+      </section>
+      <section class="test-case" id="R28-L-4">
+        <h2>R28-L-4　長いルビと隣接文字</h2>
+        <p class="expected">判定区分：CSS。期待結果：長いルビの張り出し・親文字のアキ・行端での配置を記録する。隣接するルビと衝突せず、文字が欠けない。正確な張り出し量を一律に固定しない。</p>
+        <p class="probe " style="inline-size:4em; line-break:strict;">天地玄<ruby>志<rt>こころざし</rt></ruby>日月。</p>
+      </section>
+      <section class="test-case" id="R28-A-start">
+        <h2>R28-A-start　短いルビ / start</h2>
+        <p class="expected">判定区分：CSS。期待結果：同じ親文字と読みで配置を比較する。startは始端、centerは中央、space-betweenは内部のアキ、space-aroundは両端にもアキを配る。</p>
+        <p class="probe " style="inline-size:8em;"><ruby style="ruby-align:start">宇宙空間<rt>そら</rt></ruby>を進む。</p>
+      </section>
+      <section class="test-case" id="R28-A-center">
+        <h2>R28-A-center　短いルビ / center</h2>
+        <p class="expected">判定区分：CSS。期待結果：同じ親文字と読みで配置を比較する。startは始端、centerは中央、space-betweenは内部のアキ、space-aroundは両端にもアキを配る。</p>
+        <p class="probe " style="inline-size:8em;"><ruby style="ruby-align:center">宇宙空間<rt>そら</rt></ruby>を進む。</p>
+      </section>
+      <section class="test-case" id="R28-A-space-between">
+        <h2>R28-A-space-between　短いルビ / space-between</h2>
+        <p class="expected">判定区分：CSS。期待結果：同じ親文字と読みで配置を比較する。startは始端、centerは中央、space-betweenは内部のアキ、space-aroundは両端にもアキを配る。</p>
+        <p class="probe " style="inline-size:8em;"><ruby style="ruby-align:space-between">宇宙空間<rt>そら</rt></ruby>を進む。</p>
+      </section>
+      <section class="test-case" id="R28-A-space-around">
+        <h2>R28-A-space-around　短いルビ / space-around</h2>
+        <p class="expected">判定区分：CSS。期待結果：同じ親文字と読みで配置を比較する。startは始端、centerは中央、space-betweenは内部のアキ、space-aroundは両端にもアキを配る。</p>
+        <p class="probe " style="inline-size:8em;"><ruby style="ruby-align:space-around">宇宙空間<rt>そら</rt></ruby>を進む。</p>
+      </section>
+      <section class="test-case" id="R28-LINE">
+        <h2>R28-LINE　狭い行間と両側ルビ</h2>
+        <p class="expected">判定区分：行間のストレス・観察。期待結果：右ルビと左ルビが隣接する行で重なるかを記録する。固定した狭い行間による衝突と、通常行間での欠けを分ける。</p>
+        <p class="probe " style="inline-size:4em; line-height:1.2;"><ruby>星空<rt>ほしぞら</rt></ruby><ruby class="ruby-under">月光<rt>げっこう</rt></ruby><ruby>天体<rt>てんたい</rt></ruby><ruby class="ruby-under">観測<rt>かんそく</rt></ruby>。</p>
+      </section>
+
+    </section>
+  </body>
+</html>

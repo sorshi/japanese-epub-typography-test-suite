@@ -2,9 +2,17 @@
 
 [日本語](README.md) / **English**
 
-Japanese vertical typography tests (EPUB 3, v1 / initial release).
+Japanese vertical typography tests (EPUB 3, v2 / font verification).
 
-This reflowable EPUB test suite lets you compare Japanese EPUB readers using the same text and conditions. It covers vertical writing, ruby annotations, line-breaking rules, tate-chu-yoko, emphasis marks, illustrations, and page boundaries. The tests reference primary sources such as JLReq, CSS, and Unicode, and include case IDs and expected results. The book contains 33 test chapters (Chapters 1–33), a cover, and a colophon. Created and published by sorshi. Both the source files and the built EPUB are provided under the MIT License.
+This reflowable EPUB test suite lets you compare Japanese EPUB readers using the same text and conditions. It covers vertical writing, ruby annotations, line-breaking rules, tate-chu-yoko, emphasis marks, illustrations, and page boundaries. The tests reference primary sources such as JLReq, CSS, and Unicode, and include case IDs and expected results. The book contains 34 test chapters (Chapters 1–34), a cover, and a colophon. Created and published by sorshi. Original content is provided under the MIT License; the embedded font is under SIL Open Font License 1.1.
+
+## Changes in v2
+
+Ordinary text no longer sets `font-family`, so typography tests use the reader default. Monospace code samples and the cover/colophon styles are preserved. Existing Chapter 33 is unchanged; Chapter 34 adds 14 font verification cases.
+
+Record declared candidates, actual rendered fonts, and loading results separately. Reader preferences and Japanese alias mapping are reader policies, and different line breaks or page counts are not failures by themselves.
+
+The embedding test includes a 34,024-byte Shippori Mincho subset under SIL Open Font License 1.1. See [provenance and regeneration](FONT-LICENSE.md) and [full license](FONT-OFL.txt). Normal builds need no additional tools or network access.
 
 ## Downloading the EPUB
 
@@ -22,10 +30,11 @@ GitHub's `Source code (zip)` and `Source code (tar.gz)` downloads contain the so
 - `EPUB/cover.xhtml` and `EPUB/cover.png`: Cover page and cover image for book listings
 - `EPUB/colophon.xhtml`: Colophon and the full MIT License
 - `EPUB/publication.css`: Styles for the cover and colophon
-- `EPUB/chapter01.xhtml` through `chapter33.xhtml`: Test chapters
+- `EPUB/chapter01.xhtml` through `chapter34.xhtml`: Test chapters
 - `EPUB/chapter23.xhtml`: Illustration rendering, transparency, and color tests
 - `EPUB/images/`: 11 PNG and JPEG images for comparing transparency, color, and proportions of white and inked pixels
 - `EPUB/style.css`: Typography styles
+- `generate_font_fixture.py`, `font_probe.txt`, `FONT-LICENSE.md`, `FONT-OFL.txt`: Embedded font fixture generation and licensing
 - `build.py`: Builds the EPUB using only the Python standard library; optionally runs EPUBCheck
 - `test_build.py`: Regression checks for packaging, links, preservation of text sequences, and reproducibility
 - `generate_image_fixtures.py`: Source script for generating simple geometric images
@@ -34,7 +43,7 @@ GitHub's `Source code (zip)` and `Source code (tar.gz)` downloads contain the so
 
 ## Test coverage
 
-Chapters 1–24 cover basic features and a combined sample. Chapter 25 explains how to use the suite and assess results. Chapters 26–33 cover boundary conditions and regression tests. Use the case IDs to record results together with the expected rendering, reference sources, and display conditions.
+Chapters 1–24 cover basic features and a combined sample. Chapter 25 explains how to use the suite and assess results. Chapters 26–33 cover boundary conditions and regression tests. Chapter 34 covers fonts. Use the case IDs to record results together with the expected rendering, reference sources, and display conditions.
 
 | Chapters | What they test |
 | --- | --- |
@@ -60,6 +69,7 @@ Chapters 1–24 cover basic features and a combined sample. Chapter 25 explains 
 | 31 | Mixed Japanese and Western text, numbers and units, and tate-chu-yoko with ruby and emphasis marks |
 | 32 | Characters receiving emphasis marks, exclusions and symbol exceptions, left/right placement, and collisions with ruby |
 | 33 | NFC and NFD, half-width voiced kana, variation selectors, supplementary-plane kanji, selection, and search |
+| 34 | Reader defaults, Japanese serif aliases, named fonts, sans-serif, monospace, embedding, fallback, inheritance, and loading |
 
 Chapter 22 includes the unvoiced vertical kana repeat mark `〳〵` (U+3033 U+3035) and its voiced counterpart `〴〵` (U+3034 U+3035). No spaces, line breaks, or HTML tags occur between the characters, so you can inspect the upper and lower glyphs and their connection in vertical text. Rendering also depends on the font in use.
 
@@ -73,7 +83,7 @@ The editable cover artwork is an SVG made from a background color, text, and a s
 
 Copyright (c) 2026 sorshi
 
-The source code, test text, documentation, cover, original images, and the EPUB built from these files are provided under the MIT License. Preserve the copyright notice and license text when redistributing them. See [LICENSE](LICENSE) for the full license and [LICENSING.md](LICENSING.md) for its scope and treatment of external materials. The full license is also included in the colophon so it remains available when the EPUB is distributed on its own.
+The source code, test text, documentation, cover, original images, and these portions of the built EPUB are provided under the MIT License. The embedded font is separately licensed under SIL Open Font License 1.1. Preserve the copyright notice and license text when redistributing them. See [LICENSE](LICENSE) for the full license and [LICENSING.md](LICENSING.md) for its scope and treatment of external materials. The full license is also included in the colophon so it remains available when the EPUB is distributed on its own.
 
 ## Illustration tests (Chapter 23)
 

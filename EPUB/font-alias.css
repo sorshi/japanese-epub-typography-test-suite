@@ -1,0 +1,3 @@
+@charset "UTF-8";
+/* importを経由した指定も、同じ明朝名として扱えるか確認するルン。 */
+.font-imported { font-family: serif-ja, serif; }

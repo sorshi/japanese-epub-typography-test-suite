@@ -11,10 +11,10 @@
       <p class="edition-line">JAPANESE EPUB TYPOGRAPHY TEST SUITE</p>
       <h1>日本語縦書き組版テスト</h1>
       <dl>
-        <dt>版</dt><dd>v1（初回リリース）</dd>
-        <dt>作成日</dt><dd>2026年10月14日</dd>
+        <dt>版</dt><dd>v2（既定フォント対応・フォント検証章追加）</dd>
+        <dt>作成日</dt><dd>2026年10月15日</dd>
         <dt>制作・発行</dt><dd><a href="https://github.com/sorshi">sorshi</a></dd>
-        <dt>形式</dt><dd>EPUB 3／リフロー型／検証本文33章</dd>
+        <dt>形式</dt><dd>EPUB 3／リフロー型／検証本文34章</dd>
         <dt>ライセンス</dt><dd>MIT License（SPDX識別子：MIT）</dd>
         <dt>著作権</dt><dd>Copyright (c) 2026 sorshi</dd>
       </dl>
@@ -27,9 +27,9 @@
       <p>組版の観点は<a href="https://www.w3.org/TR/jlreq/">JLReq</a>、<a href="https://www.w3.org/TR/css-text-3/">CSS Text</a>、<a href="https://www.w3.org/TR/css-ruby-1/">CSS Ruby</a>、<a href="https://www.w3.org/TR/css-writing-modes-4/">CSS Writing Modes</a>などを参照しています。文字列のまとまりは<a href="https://www.unicode.org/reports/tr29/">Unicode UAX #29</a>、ルビの構造は<a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-ruby-element">HTML Standard</a>を参照しています。各章にも対応する資料のリンクがあります。</p>
       <p>項目構成は、BPS「超縦書」の製品紹介と2013年7月のEPUBビューア比較表に着想を得ています。本文と図形はオリジナルで、参照資料の図版、スクリーンショット、配布コードを収録していません。</p>
       <h2>ライセンスの適用範囲</h2>
-      <p>本テスト集のソースコード、XHTML・CSS・メタデータ、説明文、試験本文、表紙、オリジナル画像、およびこれらを収録したビルド済みEPUBをMIT Licenseで提供します。複製、改変、再配布、商用利用などの条件は、下記のライセンス全文に従ってください。</p>
+      <p>本テスト集のソースコード、XHTML・CSS・メタデータ、説明文、試験本文、表紙、オリジナル画像、およびビルド済みEPUBのこれらの部分をMIT Licenseで提供します。埋め込みフォントには別途SIL Open Font License 1.1が適用されます。複製、改変、再配布、商用利用などの条件は、下記のライセンス全文に従ってください。</p>
       <p>再配布するソースとEPUBには、著作権表示とライセンス文を保持してください。リンク先の仕様や外部ツール、検証対象のリーダー自体へ、このライセンスを適用するものではありません。</p>
-      <p class="small-note">フォントファイルとリーダーの実装コードは本書に含めていません。</p>
+      <p class="small-note">第34章の埋め込みフォントの出典とライセンス全文は<a href="#font-license">フォントの出典・ライセンス</a>に収録しています。リーダーの実装コードは本書に含めていません。</p>
       <hr class="colophon-rule"/>
       <section class="license-text" id="mit-license" lang="en" xml:lang="en">
         <h2>MIT License</h2>
@@ -49,6 +49,35 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.</p>
+      </section>
+      <hr class="colophon-rule"/>
+      <section id="font-license">
+<h2>フォントの出典・ライセンス</h2>
+<p>第34章の埋め込み試験に、Shippori Mincho Regularの文字を絞ったサブセットを使用する。原作者はThe Shippori Mincho Project Authors。フォントにはSIL Open Font License 1.1が適用され、本書のMIT Licenseでは再許諾しない。</p>
+<p>原プロジェクト：<a href="https://github.com/fontdasu/ShipporiMincho">ShipporiMincho</a>。原本：<a href="https://github.com/google/fonts/tree/d0b2d1307ad5d6b579d627a6e5abd25952484b96/ofl/shipporimincho">Google Fontsの固定リビジョン</a>。</p>
+<p>変更内容：試験文で使う文字と、その縦組み字形・組版機能をHarfBuzz hb-subset 14.6.0で抽出した。字形の輪郭や行寸法は変更していない。CSSでの参照名はTypography Probe Minchoで、内部のフォント名はShippori Mincho Regularを保持する。再生成手順と原本のSHA-256はソースのFONT-LICENSE.mdとgenerate_font_fixture.pyに収録している。</p>
+<section lang="en" xml:lang="en" id="ofl-license"><h3>SIL Open Font License 1.1</h3>
+<p>Copyright 2021 The Shippori Mincho Project Authors (https://github.com/fontdasu/ShipporiMincho)</p>
+<p>This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is copied below, and is also available with a FAQ at: http://scripts.sil.org/OFL</p>
+<p> ----------------------------------------------------------- SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007 -----------------------------------------------------------</p>
+<p>PREAMBLE The goals of the Open Font License (OFL) are to stimulate worldwide development of collaborative font projects, to support the font creation efforts of academic and linguistic communities, and to provide a free and open framework in which fonts may be shared and improved in partnership with others.</p>
+<p>The OFL allows the licensed fonts to be used, studied, modified and redistributed freely as long as they are not sold by themselves. The fonts, including any derivative works, can be bundled, embedded,  redistributed and/or sold with any software provided that any reserved names are not used by derivative works. The fonts and derivatives, however, cannot be released under any other type of license. The requirement for fonts to remain under this license does not apply to any document created using the fonts or their derivatives.</p>
+<p>DEFINITIONS &quot;Font Software&quot; refers to the set of files released by the Copyright Holder(s) under this license and clearly marked as such. This may include source files, build scripts and documentation.</p>
+<p>&quot;Reserved Font Name&quot; refers to any names specified as such after the copyright statement(s).</p>
+<p>&quot;Original Version&quot; refers to the collection of Font Software components as distributed by the Copyright Holder(s).</p>
+<p>&quot;Modified Version&quot; refers to any derivative made by adding to, deleting, or substituting -- in part or in whole -- any of the components of the Original Version, by changing formats or by porting the Font Software to a new environment.</p>
+<p>&quot;Author&quot; refers to any designer, engineer, programmer, technical writer or other person who contributed to the Font Software.</p>
+<p>PERMISSION &amp; CONDITIONS Permission is hereby granted, free of charge, to any person obtaining a copy of the Font Software, to use, study, copy, merge, embed, modify, redistribute, and sell modified and unmodified copies of the Font Software, subject to the following conditions:</p>
+<p>1) Neither the Font Software nor any of its individual components, in Original or Modified Versions, may be sold by itself.</p>
+<p>2) Original or Modified Versions of the Font Software may be bundled, redistributed and/or sold with any software, provided that each copy contains the above copyright notice and this license. These can be included either as stand-alone text files, human-readable headers or in the appropriate machine-readable metadata fields within text or binary files as long as those fields can be easily viewed by the user.</p>
+<p>3) No Modified Version of the Font Software may use the Reserved Font Name(s) unless explicit written permission is granted by the corresponding Copyright Holder. This restriction only applies to the primary font name as presented to the users.</p>
+<p>4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font Software shall not be used to promote, endorse or advertise any Modified Version, except to acknowledge the contribution(s) of the Copyright Holder(s) and the Author(s) or with their explicit written permission.</p>
+<p>5) The Font Software, modified or unmodified, in part or in whole, must be distributed entirely under this license, and must not be distributed under any other license. The requirement for fonts to remain under this license does not apply to any document created using the Font Software.</p>
+<p>TERMINATION This license becomes null and void if any of the above conditions are not met.</p>
+<p>DISCLAIMER THE FONT SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM OTHER DEALINGS IN THE FONT SOFTWARE.</p>
+
+</section><p><a href="chapter34.xhtml#F34-EMBED">埋め込みフォントの試験へ戻る</a>／<a href="colophon.xhtml">奥付へ戻る</a></p>
+
       </section>
     </section>
   </body>

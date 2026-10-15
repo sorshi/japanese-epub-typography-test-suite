@@ -20,7 +20,7 @@ class BuildTests(unittest.TestCase):
         self.root.mkdir()
         for name in ("EPUB", "META-INF"):
             shutil.copytree(build.ROOT / name, self.root / name)
-        for name in ("mimetype", ".gitignore", "README.md", "README.en.md", "LICENSE", "LICENSING.md", "cover.svg", "build.py", "test_build.py", "generate_image_fixtures.py"):
+        for name in ("mimetype", ".gitignore", "README.md", "README.en.md", "LICENSE", "LICENSING.md", "cover.svg", "build.py", "test_build.py", "generate_image_fixtures.py", "generate_font_fixture.py", "font_probe.txt", "FONT-LICENSE.md", "FONT-OFL.txt"):
             shutil.copy2(build.ROOT / name, self.root / name)
         for name, value in {
             "ROOT": self.root,
@@ -50,7 +50,7 @@ class BuildTests(unittest.TestCase):
             self.assertEqual(archive.infolist()[0].filename, "mimetype")
             self.assertEqual(archive.infolist()[0].compress_type, zipfile.ZIP_STORED)
             self.assertEqual(archive.read("mimetype"), b"application/epub+zip")
-            self.assertEqual(len([name for name in archive.namelist() if '/chapter' in name]), 33)
+            self.assertEqual(len([name for name in archive.namelist() if '/chapter' in name]), 34)
             self.assertEqual(len([name for name in archive.namelist() if name.startswith('EPUB/images/')]), 11)
             self.assertIn("EPUB/cover.png", archive.namelist())
             self.assertIn("EPUB/colophon.xhtml", archive.namelist())
@@ -99,6 +99,16 @@ class BuildTests(unittest.TestCase):
     def test_incomplete_embedded_license_is_rejected(self):
         self.replace("colophon.xhtml", 'Permission is hereby granted, free of charge', 'Permission notice removed')
         with self.assertRaisesRegex(ValueError, "complete LICENSE"):
+            build.check_sources()
+
+    def test_broken_css_font_reference_is_rejected(self):
+        self.replace("font-tests.css", 'fonts/ShipporiMincho-Regular-test-subset.ttf', 'fonts/missing.ttf')
+        with self.assertRaisesRegex(ValueError, "Missing"):
+            build.check_sources()
+
+    def test_incomplete_font_license_is_rejected(self):
+        self.replace("colophon.xhtml", 'Copyright 2021 The Shippori Mincho Project Authors', 'Copyright notice removed')
+        with self.assertRaisesRegex(ValueError, "complete OFL"):
             build.check_sources()
 
     def test_image_chapter_is_23(self):

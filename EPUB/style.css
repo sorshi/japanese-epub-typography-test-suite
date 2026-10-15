@@ -1,7 +1,8 @@
 @charset "UTF-8";
 @namespace epub "http://www.idpf.org/2007/ops";
 html { writing-mode: vertical-rl; -webkit-writing-mode: vertical-rl; }
-body { margin: 6%; padding: 0; font-family: "Noto Serif CJK JP", "Yu Mincho", "Hiragino Mincho ProN", serif; line-height: 1.85; font-size: 1em; }
+/* 通常本文の書体はリーダーに任せ、書体指定の試験は最終章だけに置くルン。 */
+body { margin: 6%; padding: 0; line-height: 1.85; font-size: 1em; }
 h1 { font-size: 1.45em; margin: 0 0 1.1em 0; line-height:1.5; }
 h2 { font-size: 1.2em; margin: 0 0 1em; }
 p { margin: 0 0 1em; text-indent: 1em; }

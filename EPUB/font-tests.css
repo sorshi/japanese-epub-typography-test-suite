@@ -1,0 +1,20 @@
+@charset "UTF-8";
+@import "font-alias.css";
+
+/* 埋め込み書体は専用の試験段落だけに適用するルン。 */
+@font-face {
+    font-family: "Typography Probe Mincho";
+    src: url("fonts/ShipporiMincho-Regular-test-subset.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+.font-inherit { font-family: inherit; }
+.font-alias { font-family: serif-ja, serif; }
+.font-alias-v { font-family: serif-ja-v, serif-ja, serif; }
+.font-named { font-family: "Noto Serif CJK JP", "Yu Mincho", "Hiragino Mincho ProN", serif; }
+.font-sans { font-family: sans-serif; }
+.font-mono { font-family: monospace; }
+.font-embedded { font-family: "Typography Probe Mincho", serif; }
+.font-missing-family { font-family: "Typography Deliberately Missing 9f2c", "Typography Probe Mincho", serif; }
+.font-shorthand { font: 1em/1.85 serif-ja, serif; }
+.font-probe { text-indent: 0; line-height: 1.85; }

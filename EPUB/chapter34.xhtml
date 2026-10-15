@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>フォントの選択・継承・埋め込み</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="font-tests.css"/>
+  </head>
+  <body>
+    <section id="chapter34">
+      <h1>34　フォントの選択・継承・埋め込み</h1>
+      <p class="info">v2の通常本文はフォント未指定。この章の試験段落だけに書体を指定する。最初にリーダーのフォント設定、書籍指定を尊重する設定、Webフォント・端末フォントの利用状況を記録し、方針の差と表示の不具合を分けて評価する。</p>
+      <p class="reference">参照：<a href="https://www.w3.org/TR/css-fonts-3/">CSS Fonts Level 3</a> / <a href="https://www.w3.org/TR/epub-rs-33/">EPUB Reading Systems 3.3</a>。判定方法は<a href="chapter25.xhtml">第25章</a>。</p>
+      <h2>確認と記録</h2>
+      <p>この章では、ネットワークから取得する書体を「Webフォント」、端末やリーダーに搭載された書体や利用者がインストールした書体を「端末フォント」と呼び、EPUB内の埋め込みフォントと区別する。</p>
+      <p>ケースID、Webフォント・端末フォントの使用状況、書籍の指定、計算済みの候補列、実際に描画したフォント、読み込み結果を分けて記録する。見た目やfont-familyの候補列だけで使用書体を断定しない。実使用フォントを調べられない端末では「未確認」と明記する。</p>
+      <p>端末間で同じ改行・ページ数になることは要求しない。既定書体が同じ場合は書体の見分けがつかない試験もあるため、設定や実使用フォントを併せて確認する。第33章の結合文字・異体字試験も継続して使う。</p>
+      <section class="test-case" id="F34-DEFAULT">
+        <h2>F34-DEFAULT　フォント未指定の本文</h2>
+        <p class="expected">重要度：高。判定区分：リーダー方針。期待結果：書籍の固有書体に固定されず、リーダーの既定書体または利用者が選んだ書体で表示される。この段落にはfont-familyを指定していない。Webフォントを使う場合と端末フォントを使う場合で、選択された書体と通信の有無を記録する。切り替えできないリーダーでは、利用できる条件だけを評価する。特定の書体名を全リーダー共通の合格条件にしない。</p>
+        <p class="font-probe ">明朝の検証。日本語の本文、星と月。「縦書き」あいうえお ABC xyz 0123456789</p>
+      </section>
+      <section class="test-case" id="F34-INHERIT">
+        <h2>F34-INHERIT　親要素からの継承</h2>
+        <p class="expected">重要度：中。判定区分：CSS。期待結果：font-family: inheritの段落が、未指定の対照段落と同じ書体を継承する。ルビと太字が追加されても本文の候補列が意図せず別の書体に変わらない。</p>
+        <p class="font-probe font-inherit">継承した本文と<ruby>星雲<rt>せいうん</rt></ruby>、<strong>強調した文字</strong>。</p>
+      </section>
+      <section class="test-case" id="F34-ALIAS">
+        <h2>F34-ALIAS　汎用の日本語明朝名</h2>
+        <p class="expected">重要度：高。判定区分：リーダー方針・観察。指定：serif-ja, serif。serif-jaはCSS標準の汎用ファミリー名ではない。既定明朝への割り当てに対応するリーダーでは未指定の本文と比較し、未対応ならserifへの代替を記録する。割り当ての有無だけで規格違反とは判定しない。</p>
+        <p class="font-probe font-alias">明朝の検証。日本語の本文、星と月。「縦書き」あいうえお ABC xyz 0123456789</p>
+      </section>
+      <section class="test-case" id="F34-ALIAS-V">
+        <h2>F34-ALIAS-V　縦組み用の明朝名</h2>
+        <p class="expected">重要度：高。判定区分：リーダー方針・観察。指定：serif-ja-v, serif-ja, serif。前項との対応を確認する。縦書きの約物、仮名、英数字が欠けないことを確認し、書体と縦横方向は別々に記録する。</p>
+        <p class="font-probe font-alias-v">明朝の検証。日本語の本文、星と月。「縦書き」あいうえお ABC xyz 0123456789</p>
+      </section>
+      <section class="test-case" id="F34-NAMED">
+        <h2>F34-NAMED　固有の書体名</h2>
+        <p class="expected">重要度：高。判定区分：CSS・リーダー方針。指定：Noto Serif CJK JP、Yu Mincho、Hiragino Mincho ProN、serifの順。書籍の指定を尊重する設定では、利用可能で対象文字を持つ候補を使う。指定書体がない場合や利用者設定で置き換える場合は、その条件を記録する。見た目が未指定本文と同じでも、指定が無視されたとは即断しない。</p>
+        <p class="font-probe font-named">明朝の検証。日本語の本文、星と月。「縦書き」あいうえお ABC xyz 0123456789</p>
+      </section>
+      <section class="test-case" id="F34-SANS">
+        <h2>F34-SANS　ゴシック指定</h2>
+        <p class="expected">重要度：高。判定区分：CSS・リーダー方針。指定：sans-serif。書籍の指定を尊重する設定では、明朝の候補へ一律に置き換えられない。段落を出た後の通常本文へゴシック指定が波及しない。</p>
+        <p class="font-probe font-sans">明朝の検証。日本語の本文、星と月。「縦書き」あいうえお ABC xyz 0123456789</p>        <p class="font-probe ">通常本文へ戻る。星と月の位置を記録する。</p>
+      </section>
+      <section class="test-case" id="F34-MONO">
+        <h2>F34-MONO　等幅指定</h2>
+        <p class="expected">重要度：高。判定区分：CSS・リーダー方針。指定：monospace。英字iとW、数字0の各文字幅を比較する。日本語と欧文が同じ幅であることは要求しない。等幅の指定が次の通常段落へ波及しない。</p>
+        <p class="font-probe font-mono">iiii WWWW 0000 1111 ABCD</p>        <p class="font-probe ">通常本文へ戻る。星と月の位置を記録する。</p>
+      </section>
+      <section class="test-case" id="F34-EMBED">
+        <h2>F34-EMBED　書籍に埋め込んだ明朝体</h2>
+        <p class="expected">重要度：高。判定区分：埋め込みフォント対応。指定：Typography Probe Mincho。Shippori Mincho Regularの試験用サブセットをEPUB内から読み込む。書籍の指定を尊重する設定では、この段落が埋め込み書体で描画されることを実使用フォントで確認する。ファイルの存在やCSS候補名だけでは成功としない。端末に同じ名前のフォントをインストールする必要はない。</p>
+        <p class="font-probe font-embedded" id="embedded-sample">明朝の検証。日本語の本文、星と月。「縦書き」あいうえお ABC xyz 0123456789</p>
+        <p>収録文字は埋め込み試験の本文とルビに限定している。字形と縦組み機能は原フォントから保持し、太字フォントは含めていない。出典とSIL Open Font License全文は<a href="colophon.xhtml#font-license">フォントの出典・ライセンス</a>にある。</p>
+      </section>
+      <section class="test-case" id="F34-MISSING-FAMILY">
+        <h2>F34-MISSING-FAMILY　存在しない書体名からの代替</h2>
+        <p class="expected">重要度：高。判定区分：CSS。先頭候補に、この本が提供しないTypography Deliberately Missing 9f2cを指定し、次に埋め込み書体を指定している。先頭候補が端末にもない条件では、前項と同じ埋め込み書体で表示され、文字が消えない。偶然同名の書体がある場合は条件未成立とする。</p>
+        <p class="font-probe font-missing-family">明朝の検証。日本語の本文、星と月。「縦書き」あいうえお ABC xyz 0123456789</p>
+      </section>
+      <section class="test-case" id="F34-MISSING-GLYPH">
+        <h2>F34-MISSING-GLYPH　一部の文字だけ別書体で補う</h2>
+        <p class="expected">重要度：高。判定区分：フォント依存。埋め込みサブセットに𠮷（U+20BB7）と葛（U+845B）は意図的に含めていない。この二文字を端末の別書体で補えるか、前後の文字やルビの位置が崩れないか確認する。どの候補にも字形がない場合はフォント不足と記録する。代替書体で表示できることと、埋め込み書体がその字を持つことを混同しない。</p>
+        <p class="font-probe font-embedded">星と𠮷と葛と月。<ruby>星<rt>ほし</rt></ruby>と月。</p>
+      </section>
+      <section class="test-case" id="F34-MARKS">
+        <h2>F34-MARKS　記号の欠字と行の寸法</h2>
+        <p class="expected">重要度：高。判定区分：読書時の回帰・フォント依存。未指定の本文で〱・〲、〳〵・〴〵、―・—・…・‥を確認する。空白・四角への置き換え、前後の文字との重なり、補助書体による極端な行間の増大を記録する。上下二文字の接続は<a href="chapter22.xhtml">第22章</a>でも比較する。</p>
+        <p class="font-probe ">星〱月。星〲月。星〳〵月。星〴〵月。――、——、……、‥‥。</p>        <p class="font-probe ">対照の本文。<ruby>星雲<rt>せいうん</rt></ruby>を見上げる。</p>
+      </section>
+      <section class="test-case" id="F34-DECORATION">
+        <h2>F34-DECORATION　太字・ルビ・圏点・縦中横</h2>
+        <p class="expected">重要度：中。判定区分：読書時の回帰。通常と太字、ルビ、圏点、縦中横が欠けず、互いに重ならない。太字の別ファイルを使う場合と合成太字を使う場合を区別して記録する。フォントごとの太さや文字幅の違い自体は不適合にしない。</p>
+        <p class="font-probe ">通常の本文。<strong>太字の本文。</strong><ruby>東京<rt>とうきょう</rt></ruby>の空。<span class="emphasis">強調する言葉</span>。第<span class="tcy">12</span>観測区。</p>
+      </section>
+      <section class="test-case" id="F34-CSS-FORMS">
+        <h2>F34-CSS-FORMS　CSSの指定方法の比較</h2>
+        <p class="expected">重要度：中。判定区分：CSS・リーダー方針。同じserif-ja, serifを、import先、インライン、font短縮形で指定した三段落を比較する。いずれも同じ方針で書体を選び、短縮形の文字サイズ・行高だけが意図せず失われない。</p>
+        <p class="font-probe font-imported">明朝の検証。日本語の本文、星と月。「縦書き」あいうえお ABC xyz 0123456789</p>        <p class="font-probe " style="font-family: serif-ja, serif;">明朝の検証。日本語の本文、星と月。「縦書き」あいうえお ABC xyz 0123456789</p>        <p class="font-probe font-shorthand">明朝の検証。日本語の本文、星と月。「縦書き」あいうえお ABC xyz 0123456789</p>
+      </section>
+      <section class="test-case" id="F34-LOAD">
+        <h2>F34-LOAD　初回・再読込・取得失敗とリフロー</h2>
+        <p class="expected">重要度：中。判定区分：手動での読書時回帰。初回とキャッシュ済みの再読込で、未指定本文と埋め込み段落を比較する。リーダーがWebフォントを使う場合は、ネットワーク検査機能などで取得成功・失敗を別々に確認する。本EPUBは通信失敗を発生させるスクリプトや壊れた参照を含めていないため、失敗条件を作れなかった場合は未実施と記録する。</p>
+        <p>書体の読み込み前後、文字サイズ変更、画面の縦横変更を行い、<a href="chapter29.xhtml#P001">第29章P001</a>からの長文で欠落・重複・読書位置の飛びを確認する。改行位置とページ数の変化自体は許容する。端末フォントを使う条件と、ネットワークに接続しないオフライン条件は分けて記録する。取得済みのWebフォントはオフラインでも使われる場合がある。</p>
+      </section>
+      <p><a href="chapter33.xhtml">第33章：結合文字・異体字シーケンス</a>／<a href="colophon.xhtml">奥付・ライセンス</a></p>
+    </section>
+  </body>
+</html>

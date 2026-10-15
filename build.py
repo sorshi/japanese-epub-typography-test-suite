@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import re
 import shutil
 import subprocess
 import sys
@@ -22,7 +23,7 @@ NS = {
     "opf": "http://www.idpf.org/2007/opf",
     "container": "urn:oasis:names:tc:opendocument:xmlns:container",
 }
-ARCHIVE_DATE = (2026, 10, 14, 11, 17, 1)
+ARCHIVE_DATE = (2026, 10, 14, 22, 32, 43)
 
 
 def local_target(source: Path, href: str) -> tuple[Path, str]:
@@ -119,6 +120,21 @@ def check_sources() -> list[Path]:
     unicode_sample = unicode_doc.find(".//h:p[@id='unicode-copy']", NS)
     if unicode_sample is None or unicode_sample.text != "が／か\u3099／ｶﾞ／葛\U000E0100／𠮷":
         raise ValueError("Unicode test sequences were changed or normalized")
+    # CSSのimport先と埋め込みフォントも、配布前に参照切れを検出するルン。
+    for path in resources:
+        if path.suffix == ".css":
+            css = re.sub(r"/\*.*?\*/", "", path.read_text(encoding="utf-8"), flags=re.S)
+            references = re.findall(r'url\(\s*[\"\']?([^\"\'\s)]+)', css)
+            references += re.findall(r'@import\s+[\"\']([^\"\']+)', css)
+            for href in references:
+                target, _ = local_target(path, href)
+                if target not in manifest.values():
+                    raise ValueError(f"CSS reference is not in the manifest: {href}")
+    font_license = documents[(ROOT / "EPUB/colophon.xhtml").resolve()]
+    paragraphs = font_license.findall(".//h:section[@id='ofl-license']/h:p", NS)
+    included = " ".join("".join(p.itertext()) for p in paragraphs)
+    if included.split() != (ROOT / "FONT-OFL.txt").read_text(encoding="utf-8").split():
+        raise ValueError("Embedded font must include the complete OFL license")
     return resources
 
 
@@ -143,7 +159,8 @@ def build(output: Path) -> None:
 def build_source_zip(output: Path) -> None:
     # distや一時ファイルを除き、ビルドに必要なソースだけを梱包するルン。
     paths = [MIMETYPE, ROOT / ".gitignore", ROOT / "README.md", ROOT / "README.en.md", ROOT / "LICENSE", ROOT / "LICENSING.md", ROOT / "cover.svg",
-             ROOT / "build.py", ROOT / "test_build.py", ROOT / "generate_image_fixtures.py"]
+             ROOT / "build.py", ROOT / "test_build.py", ROOT / "generate_image_fixtures.py",
+             ROOT / "generate_font_fixture.py", ROOT / "font_probe.txt", ROOT / "FONT-LICENSE.md", ROOT / "FONT-OFL.txt"]
     paths.extend(check_sources())
     output.parent.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(output, "w") as archive:

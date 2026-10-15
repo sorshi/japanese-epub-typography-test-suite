@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="pub-id" xml:lang="ja" prefix="rendition: http://www.idpf.org/vocab/rendition/#">
   <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
-    <dc:identifier id="pub-id">urn:uuid:6081f129-1058-50ee-8cb9-8751d736d3de</dc:identifier>
-    <dc:title>日本語縦書き組版テスト v1</dc:title>
+    <dc:identifier id="pub-id">urn:uuid:fc97a076-3ebc-4c3c-9d81-6371cfad7239</dc:identifier>
+    <dc:title>日本語縦書き組版テスト v2</dc:title>
     <dc:language>ja</dc:language>
     <dc:creator>sorshi</dc:creator>
     <dc:publisher>sorshi</dc:publisher>
-    <dc:date>2026-10-14</dc:date>
-    <dc:rights>Copyright (c) 2026 sorshi. MIT License. Source code, text, original artwork, and built EPUB.</dc:rights>
-    <dc:description>日本語縦書きの基本機能・境界条件と挿絵の表示を検証する全33章の独立テスト集</dc:description>
-    <meta property="dcterms:modified">2026-10-14T11:17:01Z</meta>
+    <dc:date>2026-10-15</dc:date>
+    <dc:rights>Copyright (c) 2026 sorshi. MIT License. Original source, text and artwork. Embedded font subset: SIL Open Font License 1.1.</dc:rights>
+    <dc:description>日本語縦書きの基本機能・境界条件・挿絵・フォントの選択と埋め込みを検証する全34章の独立テスト集</dc:description>
+    <meta property="dcterms:modified">2026-10-14T22:32:43Z</meta>
     <meta property="rendition:layout">reflowable</meta>
     <meta property="rendition:flow">paginated</meta>
     <meta property="rendition:spread">auto</meta>
@@ -54,6 +54,10 @@
     <item id="c31" href="chapter31.xhtml" media-type="application/xhtml+xml"/>
     <item id="c32" href="chapter32.xhtml" media-type="application/xhtml+xml"/>
     <item id="c33" href="chapter33.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c34" href="chapter34.xhtml" media-type="application/xhtml+xml"/>
+    <item id="font-tests-css" href="font-tests.css" media-type="text/css"/>
+    <item id="font-alias-css" href="font-alias.css" media-type="text/css"/>
+    <item id="font-fixture" href="fonts/ShipporiMincho-Regular-test-subset.ttf" media-type="font/ttf"/>
     <item id="img1" href="images/blank-white.png" media-type="image/png"/>
     <item id="img2" href="images/color-shapes.jpg" media-type="image/jpeg"/>
     <item id="img3" href="images/color-shapes.png" media-type="image/png"/>
@@ -101,6 +105,7 @@
     <itemref idref="c31"/>
     <itemref idref="c32"/>
     <itemref idref="c33"/>
+    <itemref idref="c34"/>
     <itemref idref="colophon"/>
   </spine>
 </package>

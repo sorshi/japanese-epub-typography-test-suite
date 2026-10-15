@@ -6,7 +6,7 @@ Copyright (c) 2026 sorshi
 
 ## 適用範囲
 
-MIT Licenseの適用範囲には、次のオリジナルのファイルと、これらを収録してビルドしたEPUBを含みます。
+MIT Licenseの適用範囲には、次のオリジナルのファイルと、ビルド済みEPUBのこれらの部分を含みます。埋め込みフォントにはMIT Licenseを適用しません。
 
 - Pythonのビルド・検証・画像生成スクリプト
 - XHTML、CSS、OPF、ナビゲーションとメタデータ
@@ -20,6 +20,6 @@ MIT Licenseの適用範囲には、次のオリジナルのファイルと、こ
 
 JLReq、CSS、Unicode、HTMLの各仕様と、項目構成の参考にしたBPSの公開資料は、試験観点の参照資料です。リンク先の文書や商標へ本テスト集のMIT Licenseを適用するものではありません。本テスト集に、これらの資料の図版・スクリーンショット・配布コードは収録していません。
 
-書籍にはフォントファイルを埋め込んでいません。表紙のSVGは表示環境のフォントを使い、EPUBにはその表紙を画像化したPNGを収録しています。フォントファイル、Python、ImageMagick、EPUBCheck、ブラウザ、検証対象のリーダー自体は、各配布元のライセンスに従います。
+第34章にShippori Mincho Regularの試験用サブセットを埋め込んでいます。Copyright 2021 The Shippori Mincho Project Authors。フォントにはSIL Open Font License 1.1が適用されます。出典・変更内容・再生成手順は[FONT-LICENSE.md](FONT-LICENSE.md)、著作権表示とライセンス全文は[FONT-OFL.txt](FONT-OFL.txt)を参照してください。EPUB内にも同じライセンスを収録しています。表紙のSVGは表示環境のフォントを使い、EPUBにはその表紙を画像化したPNGを収録しています。フォントファイル、Python、ImageMagick、EPUBCheck、ブラウザ、検証対象のリーダー自体は、各配布元のライセンスに従います。
 
 このテスト集には、検証対象のリーダーやその第三者ライブラリの実装コードを含めていません。各リーダーのライセンスとは独立しています。
